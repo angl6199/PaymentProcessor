@@ -1,0 +1,45 @@
+.teamform {
+    position: absolute;
+    width: 50%;
+    top: 25%;
+}
+.pp-container{
+    width: 100%;
+    height: 260px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.pp-container img{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.card-3{
+    width: 32%;
+    border-radius: 5px;
+    background-color: white;
+}
+.animation2{
+    height: 0;
+    background-color: white;
+    transition: all 300ms;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.animation2 p{
+    display: none;
+}
+
+.card-3:hover  .animation2{
+    height: 54px;
+    transition: all 300ms;
+}
+.card-3:hover  p{
+    display: block;
+    transition: all 300ms;
+}
+
+.card-3 p{
+    color: $negro;
+    transition: all 300ms;
+}

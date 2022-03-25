@@ -1,0 +1,31 @@
+.d-none{
+    display: none !important;
+    transition: all 300ms;
+}
+.d-flex{
+    display: flex !important;
+}
+.d-block{
+    display: block !important;
+}
+.flex-column{
+    flex-direction: column !important;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+.justify-content-center{
+    justify-content: center;
+}
+.flex-row{
+    flex-direction: row;
+}
+.align-items-center{
+    align-items: center;
+}
+.space-around{
+    justify-content: space-around;
+}
+.h-95{
+    height: 95vh;
+}

@@ -1,0 +1,90 @@
+.align-self-center{
+    align-self: center;
+}
+.text-align-center{
+    text-align: center;
+}
+.text-align-justify{
+    text-align: justify;
+}
+.text-decoration-none{
+    text-decoration: none !important;
+}
+.list-style-none{
+    list-style: none;
+}
+.text-xxs{
+    font-size: 9px;
+}
+.text-xs{
+    font-size: 12px;
+}
+.text-small{
+    font-size: 14px;
+}
+.text-normal{
+    font-size: 16px;
+}
+.text-medium{
+    font-size: 18px;
+}
+.text-big{
+    font-size: 20px;
+}
+.h3{
+    font-size: 24px;
+}
+.xl{
+    font-size: 35px;
+}
+
+.a-medium-black{
+    font-family: $robotoMedium;
+    color: $negro;
+}
+
+.a-regular-black{
+    font-family: $robotoRegular;
+    color: $negro;
+}
+.a-regular-red{
+    font-family: $robotoRegular;
+    color: rgb(204, 16, 16);
+}
+.a-bold-black{
+    font-family: $robotoBold;
+    color: $negro;
+}
+
+.a-bold-white{
+    font-family: $robotoBold;
+    color: white;
+}
+
+.a-regular-gray{
+    font-family: $robotoRegular;
+    color: #a4a0a7;
+}
+
+.a-regular-white{
+    font-family: $robotoRegular;
+    color: white;
+}
+.a-regular-white-dark{
+    font-family: $robotoRegular;
+    color: #dddddd;
+}
+
+.a-regular-azul-1{
+    font-family: $robotoRegular;
+    color: #3483fa;
+}
+
+.a-medium-azul-1{
+    font-family: $robotoMedium;
+    color: #3483fa;
+}
+
+.lh-16{
+    line-height: 16px;
+}
