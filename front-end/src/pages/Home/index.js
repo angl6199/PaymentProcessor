@@ -19,7 +19,7 @@ export default function Home({loggedUser, setLoggedUser}){
         importada de React */}
     return (
         <>
-        <div className={`dark-layout d-flex`}>
+        <div className={`d-flex`}>
             <LeftMenu loggedUser={loggedUser} setLoggedUser={setLoggedUser}></LeftMenu>
             <HomeMovies loggedUser={loggedUser}></HomeMovies>
         </div>

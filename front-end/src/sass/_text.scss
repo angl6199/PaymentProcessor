@@ -34,6 +34,9 @@
 .h3{
     font-size: 24px;
 }
+.l{
+    font-size: 30px;
+}
 .xl{
     font-size: 35px;
 }
@@ -41,6 +44,11 @@
 .a-medium-black{
     font-family: $robotoMedium;
     color: $negro;
+}
+
+.a-medium-salmon{
+    font-family: $robotoMedium;
+    color: $salmon1;
 }
 
 .a-regular-black{
@@ -63,7 +71,20 @@
 
 .a-regular-gray{
     font-family: $robotoRegular;
-    color: #a4a0a7;
+    color: $gray1;
+}
+
+.a-light-gray{
+    font-family: $robotoLight;
+    color: $gray1;
+}
+.a-light-dark{
+    font-family: $robotoLight;
+    color: $dark1;
+}
+.a-light-white{
+    font-family: $robotoLight;
+    color: white;
 }
 
 .a-regular-white{

@@ -45,30 +45,12 @@ export default function HomeMovies({loggedUser}){
     return (
         <>
             { ready &&
-            <div className={`d-flex flex-column w-90-2`}>
-                <div className={`w-90-2`}>
-                    <div className={`category d-flex ml-7`}>
-                        <p className={`a-regular-white ml-auto mr-auto mt-4 mb-4`}>Colección de Disney +</p>
-                    </div>
+            <div className={`d-flex flex-column right-screen`}>
+                <div className={`d-flex align-items-center justify-content-right right-header`}>
+                    <p className="mt-0 mb-0 mr-8 a-light-white text-big">Usuario</p>
                 </div>
-                <div className={`w-100 d-flex`}>
-                    <Link className={'movieLink text-decoration-none'} to={`/${loggedUser.nombre}-${loggedUser.apellido}/movieTrailer/${1}`}><div style={{'backgroundImage': `url(${i1})`}} className={`d-flex film-container ml-7 mr-2`}><div className={`d-flex animation align-items-center justify-content-center`}><p className={'m-0 a-regular-white'}>Iron Man: El hombre de hierro</p></div></div></Link>
-                    <Link className={'movieLink text-decoration-none'} to={`/${loggedUser.nombre}-${loggedUser.apellido}/movieTrailer/${2}`}><div style={{'backgroundImage': `url(${i2})`}} className={`d-flex film-container ml-5 mr-2`}><div className={`d-flex animation align-items-center justify-content-center`}><p className={'m-0 a-regular-white'}>Thor: Ragnarok</p></div></div></Link>
-                    <Link className={'movieLink text-decoration-none'} to={`/${loggedUser.nombre}-${loggedUser.apellido}/movieTrailer/${3}`}><div style={{'backgroundImage': `url(${i3})`}} className={`d-flex film-container ml-5 mr-2`}><div className={`d-flex animation align-items-center justify-content-center`}><p className={'m-0 a-regular-white'}>Capitán América: El primer vengador</p></div></div></Link>
-                    <Link className={'movieLink text-decoration-none'} to={`/${loggedUser.nombre}-${loggedUser.apellido}/movieTrailer/${4}`}><div style={{'backgroundImage': `url(${i4})`}} className={`d-flex film-container ml-5 mr-2`}><div className={`d-flex animation align-items-center justify-content-center`}><p className={'m-0 a-regular-white'}>Avengers: Era de Ultrón</p></div></div></Link>
-                    <Link className={'movieLink text-decoration-none'} to={`/${loggedUser.nombre}-${loggedUser.apellido}/movieTrailer/${5}`}><div style={{'backgroundImage': `url(${i5})`}} className={`d-flex film-container ml-5 mr-2`}><div className={`d-flex animation align-items-center justify-content-center`}><p className={'m-0 a-regular-white'}>Guardianes de la galaxia</p></div></div></Link>                    
-                </div>
-                <div className={`w-90-2 mt-4`}>
-                    <div className={`category d-flex ml-7`}>
-                        <p className={`a-regular-white ml-auto mr-auto mt-4 mb-4`}>Colección de Star +</p>
-                    </div>
-                </div>
-                <div className={`w-100 d-flex`}>
-                    <Link className={'movieLink text-decoration-none'} to={`/${loggedUser.nombre}-${loggedUser.apellido}/movieTrailer/${6}`}><div style={{'backgroundImage': `url(${i6})`}} className={`d-flex film-container ml-7 mr-2`}><div className={`d-flex animation align-items-center justify-content-center`}><p className={'m-0 a-regular-white'}>Logan</p></div></div></Link>
-                    <Link className={'movieLink text-decoration-none'} to={`/${loggedUser.nombre}-${loggedUser.apellido}/movieTrailer/${7}`}><div style={{'backgroundImage': `url(${i7})`}} className={`d-flex film-container ml-5 mr-2`}><div className={`d-flex animation align-items-center justify-content-center`}><p className={'m-0 a-regular-white'}>El planeta de los simios: Confrontación</p></div></div></Link>
-                    <Link className={'movieLink text-decoration-none'} to={`/${loggedUser.nombre}-${loggedUser.apellido}/movieTrailer/${8}`}><div style={{'backgroundImage': `url(${i8})`}} className={`d-flex film-container ml-5 mr-2`}><div className={`d-flex animation align-items-center justify-content-center`}><p className={'m-0 a-regular-white'}>Revenant: El renacido</p></div></div></Link>
-                    <Link className={'movieLink text-decoration-none'} to={`/${loggedUser.nombre}-${loggedUser.apellido}/movieTrailer/${9}`}><div style={{'backgroundImage': `url(${i9})`}} className={`d-flex film-container ml-5 mr-2`}><div className={`d-flex animation align-items-center justify-content-center`}><p className={'m-0 a-regular-white'}>Jojo Rabbit</p></div></div></Link>
-                    <Link className={'movieLink text-decoration-none'} to={`/${loggedUser.nombre}-${loggedUser.apellido}/movieTrailer/${10}`}><div style={{'backgroundImage': `url(${i10})`}} className={`d-flex film-container ml-5 mr-2`}><div className={`d-flex animation align-items-center justify-content-center`}><p className={'m-0 a-regular-white'}>Rápidos y furiosos: Hobbs Y Shaw</p></div></div></Link>
+                <div className={`d-flex flex-column gray-layout`}>
+                    
                 </div>
             </div>
             }
