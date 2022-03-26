@@ -5,7 +5,7 @@ import axios from 'axios';
 import { Navigate } from 'react-router-dom'
 
 //Componentes
-import Button from './../../atoms/BlueButton/index'
+import Button from './../../atoms/OrangeButton/index'
 import Loading from "../../molecules/Loading";
 
 //Imágenes

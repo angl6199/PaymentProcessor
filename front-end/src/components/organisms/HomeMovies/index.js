@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link, Navigate } from 'react-router-dom'
 
 //Componentes
-import BlueButton from '../../atoms/BlueButton/index'
+import OrangeButton from '../../atoms/OrangeButton/index'
 import Loading from './../../molecules/Loading/index'
 
 //Imágenes

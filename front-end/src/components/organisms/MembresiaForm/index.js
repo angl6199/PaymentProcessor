@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link, Navigate } from 'react-router-dom'
 
 //Componentes
-import BlueButton from './../../atoms/BlueButton/index'
+import OrangeButton from './../../atoms/OrangeButton/index'
 import Loading from './../../molecules/Loading/index'
 
 //Imágenes
@@ -95,7 +95,7 @@ export default function MembresiaForm({loggedUser, setLoggedUser}){
                         <p className={`a-regular-black mt-2 text-small`}>Precio especial por nivel de lealtad 4.</p>
                     </div>
                     <div style={{'maxWidth':'190px'}} className={`d-flex flex-column`}>
-                        <BlueButton todo={handleSuscription} text={` ${suscrito1 == 'true' ? 'Plan Seleccionado' : 'Suscribirse'} `} disable={suscrito1 == 'true' ? true : false} variant={3}></BlueButton>
+                        <OrangeButton todo={handleSuscription} text={` ${suscrito1 == 'true' ? 'Plan Seleccionado' : 'Suscribirse'} `} disable={suscrito1 == 'true' ? true : false} variant={3}></OrangeButton>
                         <p className={`a-regular-black mt-5 text-xxs text-align-center`}>Al suscribirte, aceptas los Términos y Condiciones de Mercado Puntos.</p>
                     </div>
                 </div>
@@ -106,7 +106,7 @@ export default function MembresiaForm({loggedUser, setLoggedUser}){
                         <p className={`a-regular-black mt-2 text-small`}>Precio especial por nivel de lealtad 4.</p>
                     </div>
                     <div style={{'maxWidth':'190px'}} className={`d-flex flex-column`}>
-                        <BlueButton todo={handleSuscription} text={` ${suscrito2 == 'true' ? 'Plan Seleccionado' : 'Suscribirse'} `} disable={suscrito2 == 'true' ? true : false} variant={3}></BlueButton>
+                        <OrangeButton todo={handleSuscription} text={` ${suscrito2 == 'true' ? 'Plan Seleccionado' : 'Suscribirse'} `} disable={suscrito2 == 'true' ? true : false} variant={3}></OrangeButton>
                         <p className={`a-regular-black mt-5 text-xxs text-align-center`}>Al suscribirte, aceptas los Términos y Condiciones de Mercado Puntos.</p>
                     </div>
                 </div>

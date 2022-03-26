@@ -18,7 +18,7 @@ export default function AboutUs({loggedUser, setLoggedUser}){
         importada de React */}
     return (
         <>
-        <div className={`yellow-layout`}><img className={`mt-4 ml-15`} src={Logo}></img></div>
+        <div className={`orange-layout`}></div>
         <div className={`gray-layout`}></div>
             <LoginForm loggedUser={loggedUser} setLoggedUser={setLoggedUser}></LoginForm>
         </>

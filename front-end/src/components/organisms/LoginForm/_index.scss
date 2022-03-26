@@ -13,6 +13,11 @@
     height: 30vh;
     background-color: #fff059;
 }
+.orange-layout{
+    width: 100%;
+    height: 30vh;
+    background-color: $orange1;
+}
 .gray-layout{
     width: 100%;
     height: 70vh;
@@ -23,16 +28,17 @@
     left: 37.8%;
 }
 .create{
-    background-color: white;
+    background-color: $dark1;
     width: 246px;
     border-radius: 4px;
     height: 40px;
     transition: all 300ms;
 }
 .create:hover{
-    background-color: #307adb13;
+    background-color: $orange2;
     transition: all 300ms;
 }
+
 .create p{
     margin: 0;
     text-align: center;
@@ -52,7 +58,7 @@
     transition: all 300ms;
 }
 .needhelp:hover > div p{
-    color: #235db4;
+    color: $dark1;
     transition: all 300ms;
 }
 

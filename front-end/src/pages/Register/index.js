@@ -3,7 +3,6 @@ import React, {useState} from "react"
 
 //Componentes
 import RegisterForm from "../../components/organisms/RegisterForm";
-import Button from "../../components/atoms/BlueButton"
 //Imágenes
 import Logo from './../../assets/img/mercado-logo.png'
 

@@ -1,5 +1,5 @@
-.bluebutton{
-    background-color: #3483fa;
+.darkbutton{
+    background-color: $dark1;
     color: white;
     border-radius: 4px;
     height: 40px;
@@ -28,13 +28,13 @@
     width: 190px;
 }
 
-.bluebutton p{
+.darkbutton p{
     margin: 0;
     text-align: center;
     padding-top: 10px;
 }
 
-.bluebutton:hover{
-    background-color: #235db4;
+.darkbutton:hover{
+    background-color: $orange2;
     transition: all 300ms;
 }

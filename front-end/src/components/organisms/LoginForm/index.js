@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link, Navigate } from 'react-router-dom'
 
 //Componentes
-import BlueButton from './../../atoms/BlueButton/index'
+import OrangeButton from '../../atoms/OrangeButton/index'
 
 //Imágenes
 
@@ -59,7 +59,7 @@ export default function LoginForm({loggedUser, setLoggedUser}){
         <>
         <div className={`position-absolute positionform`}>
             <div className={`d-flex flex-column formcontainer box-shadow-gr-nm br-10 align-items-center`}>
-                <form onSubmit={validateUser}>
+                <form className={`mb-5`} onSubmit={validateUser}>
                     <p className={`a-medium-black text-big mt-12 mb-8`}>¡Hola! Ingresa tu email <br></br> y contraseña</p>
                     <label className={`a-regular-gray text-small d-flex flex-column`}>E-mail
                         <input autoComplete={'off'} className={`text-normal a-medium-black forminput`} type={'text'} name='email' value={email} onChange={(e) => setEmail(e.target.value)}></input>
@@ -72,21 +72,21 @@ export default function LoginForm({loggedUser, setLoggedUser}){
                         <p className={`a-regular-red`}>E-mail o contraseña no válidos</p>
                         </div>
                     </div>
-                    <BlueButton variant={1}></BlueButton>
+                    <OrangeButton variant={1}></OrangeButton>
                 </form>
 
-                <Link className={`mt-5 mb-3 text-decoration-none create`} to={'/sign-up'}>
+{/*                 <Link className={`mt-5 mb-5 text-decoration-none create`} to={'/sign-up'}>
                 <div className={'cursor-pointer'}>
-                    <p className={' text-normal a-regular-azul-1'}>Crear Cuenta</p>
+                    <p className={' text-normal a-regular-white'}>Crear Cuenta</p>
                 </div>
-                </Link>
+                </Link> */}
                 
                 <hr className={`hr-gray m-0`}></hr>
                 
 
                 <Link className={`text-decoration-none needhelp w-100`} to={''}>
                 <div className={'cursor-pointer'}>
-                <p className={'text-small a-regular-azul-1 text-align-center mt-4 mb-4'}>Acuerdo de privacidad</p>
+                <p className={'text-small a-regular-gray text-align-center mt-4 mb-4'}>Acuerdo de privacidad</p>
                 </div>
                 </Link>
 
