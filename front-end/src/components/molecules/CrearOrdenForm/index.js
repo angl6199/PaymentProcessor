@@ -33,7 +33,8 @@ export default function CrearOrdenForm({type, status}){
                 <img width={50} height={50} src={paymentIcon}></img>
                 <p className={`a-light-dark l mt-0 mb-0 ml-5`}>Formato creación orden</p>
             </div>
-            <form className={`d-flex justify-content-center flex-column mt-12 crear-orden-form`}>
+            <hr className={`hr-gray mt-4 mb-0`}></hr>
+            <form className={`d-flex justify-content-center flex-column mt-8 crear-orden-form`}>
                 <label className={`a-light-dark text-big d-flex justify-content-space-between mb-6`}>Cuenta del ordenante: 
                         <input autoComplete={'off'} className={`text-normal a-light-dark crear-orden-input ml-3`} type={'text'} name='ordenante' value={ordenante} onChange={(e) => setOrdenante(e.target.value)}></input>
                 </label>
