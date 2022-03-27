@@ -35,12 +35,12 @@ export default function LeftMenu({loggedUser, setLoggedUser}){
             </div>
             <div className="scroll-overflow">
             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Pagos</p>
-            <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/home`}>
+            <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/pagos-recibidos`}>
                 <div className={'d-flex align-items-center option mt-5'}>
                     <img className={'ml-14'} width={20} height={20} src={Home}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Pagos recibidos</p>
                 </div>
             </Link>
-            <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/membresia`}>
+            <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/crear-orden`}>
                 <div className={'d-flex align-items-center option mt-4'}>
                     <img className={'ml-14'} width={20} height={20} src={Money}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear orden</p>
                 </div>

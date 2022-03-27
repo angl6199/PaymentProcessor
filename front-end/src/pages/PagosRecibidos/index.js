@@ -3,7 +3,8 @@ import React, {useState} from "react"
 
 //Componentes
 import LeftMenu from "../../components/molecules/LeftMenu";
-import MembresiaForm from "./../../components/organisms/MembresiaForm";
+import PagosRecibidos from "../../components/organisms/PagosRecibidos";
+import HeaderBar from "../../components/organisms/HeaderBar";
 
 //Imágenes
 import Logo from './../../assets/img/mercado-logo.png'
@@ -12,7 +13,7 @@ import Logo from './../../assets/img/mercado-logo.png'
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
-export default function Membresia({loggedUser, setLoggedUser}){
+export default function PagosRecibidosPage({loggedUser, setLoggedUser}){
     const [show, setShow] = useState(false)
 
     {/* Componente que retorna página de Graduación con temporizador configurado con librería Countdown
@@ -20,13 +21,13 @@ export default function Membresia({loggedUser, setLoggedUser}){
     return (
         <>
         <div className={`d-flex`}>
-            <LeftMenu loggedUser={loggedUser} setLoggedUser={setLoggedUser, setLoggedUser}></LeftMenu>
-            <div className={`d-flex flex-column w-90-2 align-items-center`}>
-                <div className={`yellow-layout`}></div>
-                <div className={`gray-layout`}></div>
-                <MembresiaForm loggedUser={loggedUser} setLoggedUser={setLoggedUser}></MembresiaForm>
+            <LeftMenu loggedUser={loggedUser} setLoggedUser={setLoggedUser}></LeftMenu>
+            <div className={`d-flex flex-column right-screen`}>
+                <HeaderBar></HeaderBar>
+                <PagosRecibidos loggedUser={loggedUser}></PagosRecibidos>
             </div>
         </div>
+        {console.log(loggedUser)}
         </>
     )
 }

@@ -92,7 +92,7 @@ export default function LoginForm({loggedUser, setLoggedUser}){
 
             </div>
         </div>
-        {redirect && <Navigate to={`/${loggedUser.nombre}-${loggedUser.apellido}/home`}></Navigate>}
+        {redirect && <Navigate to={`/${loggedUser.nombre}-${loggedUser.apellido}/pagos-recibidos`}></Navigate>}
         </>
     )
 }

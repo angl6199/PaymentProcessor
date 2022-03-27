@@ -3,7 +3,7 @@ import React, {useState} from "react"
 
 //Componentes
 import LeftMenu from "../../components/molecules/LeftMenu";
-import PagosRecibidos from "../../components/organisms/PagosRecibidos";
+import CrearOrden from "../../components/organisms/CrearOrden";
 import HeaderBar from "../../components/organisms/HeaderBar";
 
 //Imágenes
@@ -13,7 +13,7 @@ import Logo from './../../assets/img/mercado-logo.png'
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
-export default function Home({loggedUser, setLoggedUser}){
+export default function CrearOrdenPage({loggedUser, setLoggedUser}){
     const [show, setShow] = useState(false)
 
     {/* Componente que retorna página de Graduación con temporizador configurado con librería Countdown
@@ -24,7 +24,7 @@ export default function Home({loggedUser, setLoggedUser}){
             <LeftMenu loggedUser={loggedUser} setLoggedUser={setLoggedUser}></LeftMenu>
             <div className={`d-flex flex-column right-screen`}>
                 <HeaderBar></HeaderBar>
-                <PagosRecibidos loggedUser={loggedUser}></PagosRecibidos>
+                <CrearOrden loggedUser={loggedUser}></CrearOrden>
             </div>
         </div>
         {console.log(loggedUser)}
