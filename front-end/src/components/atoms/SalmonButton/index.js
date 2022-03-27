@@ -10,7 +10,7 @@ import React, {useState, useEffect} from "react"
 //Material UI
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-export default function PagosRecibidos({classNames, texto, funcion}){
+export default function PagosRecibidos({classNames, texto, funcion, tipo}){
 
     const phone = useMediaQuery('(max-width:767px)');
     const tablet = useMediaQuery('(min-width:768px)');
@@ -20,7 +20,13 @@ export default function PagosRecibidos({classNames, texto, funcion}){
         diseño responsivo mediante hooks */}
     return (
         <>
-                <button onClick={(e)=>funcion(e)} className={`salmon-button d-flex align-items-center pt-2 pb-2 pl-3 pr-3 a-light-white text-medium box-shadow-gr-bg cursor-pointer ${classNames}`}>{texto}</button>
+        {tipo == 'div' ?
+            <div className={`salmon-button d-flex align-items-center a-light-white text-medium box-shadow-gr-bg cursor-pointer ${classNames}`}>
+                <p className={`mt-0 mb-0`}>{texto}</p>
+            </div>
+        :
+            <button onClick={(e)=>funcion(e)} className={`salmon-button d-flex align-items-center pt-2 pb-2 pl-3 pr-3 a-light-white text-medium box-shadow-gr-bg cursor-pointer ${classNames}`}>{texto}</button>
+        }
         </>
     )
 }

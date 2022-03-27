@@ -9,37 +9,16 @@ import DropMenuButton from '../../atoms/DropMenuButton/index'
 import SalmonButton from '../../atoms/SalmonButton/index'
 import Loading from '../../molecules/Loading/index'
 import PaymentCard from '../../molecules/ObjectCard/index'
+import EditarOrdenForm from "../../molecules/EditarOrdenForm";
 
 //Imágenes
+
 
 
 //Material UI
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-export default function PagosRecibidos({loggedUser}){
-    const payments = [
-        {
-            id: `1`, 
-            status:'aprobado', 
-            date: '27/03/2022', 
-            ordenante: '020302030203020302', 
-            beneficiario: '010501050105010501'
-        },
-        {
-            id: `2`, 
-            status:'rechazado', 
-            date: '27/03/2022', 
-            ordenante: '123456789123456789', 
-            beneficiario: '001122334455667788'
-        },
-        {
-            id: `3`, 
-            status:'pendiente', 
-            date: '27/03/2022', 
-            ordenante: '615161516151615161', 
-            beneficiario: '010501050105010501'
-        }
-    ];
+export default function EditarOrden({loggedUser}){
     const [ready, setReady] = useState(false)
     const [ready2, setReady2] = useState(false)
     const [break2, setBreak2] = useState(false)
@@ -47,8 +26,6 @@ export default function PagosRecibidos({loggedUser}){
     const phone = useMediaQuery('(max-width:767px)');
     const tablet = useMediaQuery('(min-width:768px)');
     const desktop = useMediaQuery('(min-width:1000px)');
-
-    
 
     if (break2 == false) {
         setBreak2(true)
@@ -63,7 +40,6 @@ export default function PagosRecibidos({loggedUser}){
         console.log('clickeando boton salmon')
     }
 
-
     {/* Componente que retorna la sección izquierda de la página con posibilidad de ocultarse en 
         diseño responsivo mediante hooks */}
     return (
@@ -72,17 +48,7 @@ export default function PagosRecibidos({loggedUser}){
                 <div className={`d-flex flex-column gray-layout scroll-overflow`}>
                     <div className={`d-flex flex-column ml-12 mr-12 mt-8`}>
                         {/* Contenido de cada pagina */}
-                        <div className={`d-flex justify-content-space-between align-items-center mb-10`}>
-                            <p className={`a-light-dark l mt-0 mb-0`}>Mostrando pagos</p>
-                            <div className={`d-flex`}>
-                                <DropMenuButton classNames={`mr-5`} opciones={['27/03/2022', '26/03/2022', '25/03/2022']}></DropMenuButton>
-                                <DropMenuButton classNames={`mr-5`} opciones={['Todos', 'Aprobados', 'Rechazados', 'Pendientes']}></DropMenuButton>
-                                <SalmonButton texto={`Aplicar filtros`} funcion={test}></SalmonButton>
-                            </div>
-                        </div>
-                        <div className={`d-flex flex-column align-items-center`}>
-                            <PaymentCard type={`pagos`} payments={payments} loggedUser={loggedUser}></PaymentCard>
-                        </div>
+                        <EditarOrdenForm loggedUser={loggedUser}></EditarOrdenForm>
                     </div>
                 </div>
             }

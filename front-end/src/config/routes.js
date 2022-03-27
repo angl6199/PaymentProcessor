@@ -7,6 +7,7 @@ import AdministracionUsuario from "../pages/AdministracionUsuario";
 import CrearUsuario from "../pages/CrearUsuario";
 import AdministracionCuenta from "../pages/AdministracionCuenta";
 import CrearCuenta from "../pages/CrearCuenta";
+import EditarOrden from "../pages/EditarOrden";
 
 //Definición de rutas con definición de URL, componente renderizado y definición de exactitud para
 //transformarlas en componente Route, filtrarlas por Switch y visitarlas con Router
@@ -44,6 +45,10 @@ function defineRoutes(loggedUser, setLoggedUser) {
         {
             path: "/:userName/crear-cuenta",
             element: <CrearCuenta loggedUser={loggedUser} setLoggedUser={setLoggedUser} />,
+        },
+        {
+            path: "/:userName/editar-orden/:id",
+            element: <EditarOrden loggedUser={loggedUser} setLoggedUser={setLoggedUser} />,
         },
     ]
     

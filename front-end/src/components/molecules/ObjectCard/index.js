@@ -1,5 +1,6 @@
 //React
 import React, {useState} from "react"
+import { Link } from 'react-router-dom'
 
 //Componentes
 
@@ -16,7 +17,7 @@ import bankaccount from './../../../assets/img/account-icon.png'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { create } from "@mui/material/styles/createTransitions"
 
-function createUserCards(users) {
+function createUserCards(users, loggedUser) {
     console.log(users, 'Esto recibo de users')
     let cards = users.map((i) => 
     <>
@@ -43,32 +44,34 @@ function createUserCards(users) {
     return cards;
 }
 
-function createPaymentCards(payments) {
+function createPaymentCards(payments, loggedUser) {
     console.log(payments, 'Esto recibo de payments')
     let cards = payments.map((i) => 
-        <div className={`d-flex mb-5 pl-6 pr-6 pt-4 pb-4 justify-content-space-around align-items-center box-shadow-gr-bg object-card-body`}>
-            <img width={50} height={50} className={`mr-10`} src={i.status == 'aprobado' ? approved : i.status == 'rechazado' ? rejected : pending}></img>
-            <div className={`d-flex flex-column`}>
-                <table>
-                    <tr>
-                        <td className={`adjust-id`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Id Pago: <span className={`a-light-dark text-medium`}>{i.id}</span></p></td>
-                        <td className={`adjust-status`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Estado: <span className={`a-light-dark text-medium`}>{i.status}</span></p></td>
-                        <td><p className={`mt-0 mb-0 a-bold-black text-big`}>Fecha: <span className={`a-light-dark text-medium`}>{i.date}</span></p></td>
-                    </tr>
-                </table>
-                <table className={`mt-2`}>
-                    <tr>
-                        <td className={`adjust-cuenta`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Cuenta origen: <span className={`a-light-dark text-medium`}>{i.ordenante}</span></p></td>
-                        <td className={``}><p className={`mt-0 mb-0 ml-12 a-bold-black text-big`}>Cuenta destino: <span className={`a-light-dark text-medium`}>{i.beneficiario}</span></p></td>
-                    </tr>
-                </table>
+        <Link className={`text-decoration-none mb-5`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/editar-orden/${i.id}`}>
+            <div className={`d-flex pl-6 pr-6 pt-4 pb-4 justify-content-space-around align-items-center box-shadow-gr-bg object-card-body`}>
+                <img width={50} height={50} className={`mr-10`} src={i.status == 'aprobado' ? approved : i.status == 'rechazado' ? rejected : pending}></img>
+                <div className={`d-flex flex-column`}>
+                    <table>
+                        <tr>
+                            <td className={`adjust-id`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Id Pago: <span className={`a-light-dark text-medium`}>{i.id}</span></p></td>
+                            <td className={`adjust-status`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Estado: <span className={`a-light-dark text-medium`}>{i.status}</span></p></td>
+                            <td><p className={`mt-0 mb-0 a-bold-black text-big`}>Fecha: <span className={`a-light-dark text-medium`}>{i.date}</span></p></td>
+                        </tr>
+                    </table>
+                    <table className={`mt-2`}>
+                        <tr>
+                            <td className={`adjust-cuenta`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Cuenta origen: <span className={`a-light-dark text-medium`}>{i.ordenante}</span></p></td>
+                            <td className={``}><p className={`mt-0 mb-0 ml-12 a-bold-black text-big`}>Cuenta destino: <span className={`a-light-dark text-medium`}>{i.beneficiario}</span></p></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-        </div>
+        </Link>
     );
     return cards;
 }
 
-function createAccountsCards(cuentas) {
+function createAccountsCards(cuentas, loggedUser) {
     console.log(cuentas, 'Esto recibo de payments')
     let cards = cuentas.map((i) => 
         <div className={`d-flex mb-5 pl-6 pr-6 pt-4 pb-4 justify-content-space-around align-items-center box-shadow-gr-bg object-card-body`}>
@@ -92,7 +95,7 @@ function createAccountsCards(cuentas) {
     return cards;
 }
 
-export default function ObjectCard({type, users, payments, cuentas}){
+export default function ObjectCard({type, users, payments, cuentas, loggedUser}){
 
     {/* Componente que retorna página de Graduación con temporizador configurado con librería Countdown
         importada de React */}
@@ -100,14 +103,14 @@ export default function ObjectCard({type, users, payments, cuentas}){
         <>
         {type == 'cuentas'?
             /* Tarjeta para cuentas bancarias */
-            (createAccountsCards(cuentas))
+            (createAccountsCards(cuentas, loggedUser))
         
         : type == 'usuarios' ?
             /* Tarjeta para usuarios */
-            (createUserCards(users))
+            (createUserCards(users, loggedUser))
         :
             /* Tarjeta para usuarios */
-            (createPaymentCards(payments))
+            (createPaymentCards(payments, loggedUser))
         }
         </>
     )
