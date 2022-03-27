@@ -3,7 +3,8 @@ import React, {useState} from "react"
 
 //Componentes
 import LeftMenu from "../../components/molecules/LeftMenu";
-import HomeMovies from "../../components/organisms/HomeMovies";
+import PagosRecibidos from "../../components/organisms/PagosRecibidos";
+import HeaderBar from "../../components/organisms/HeaderBar";
 
 //Imágenes
 import Logo from './../../assets/img/mercado-logo.png'
@@ -21,7 +22,10 @@ export default function Home({loggedUser, setLoggedUser}){
         <>
         <div className={`d-flex`}>
             <LeftMenu loggedUser={loggedUser} setLoggedUser={setLoggedUser}></LeftMenu>
-            <HomeMovies loggedUser={loggedUser}></HomeMovies>
+            <div className={`d-flex flex-column right-screen`}>
+                <HeaderBar></HeaderBar>
+                <PagosRecibidos loggedUser={loggedUser}></PagosRecibidos>
+            </div>
         </div>
         {console.log(loggedUser)}
         </>

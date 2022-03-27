@@ -14,12 +14,17 @@
 @import './sass/flex';
 
 @import './components/atoms/OrangeButton/index';
+@import './components/atoms/DropMenuButton/index';
+@import './components/atoms/DropMenu/index';
+@import './components/atoms/SalmonButton/index';
 
 @import './components/molecules/LeftMenu/index';
+@import './components/molecules/ObjectCard/index';
 
 @import './components/organisms/LoginForm/index';
 @import './components/organisms/RegisterForm/index';
-@import './components/organisms/HomeMovies/index';
+@import './components/organisms/PagosRecibidos/index';
+@import './components/organisms/HeaderBar/index';
 @import './components/organisms/MovieScreen/index';
 @import './components/organisms/MembresiaForm/index';
 @import './components/organisms/UpdateForm/index';
