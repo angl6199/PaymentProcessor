@@ -10,6 +10,7 @@ import pending from './../../../assets/img/pending.png'
 import worker from './../../../assets/img/worker.png'
 import admin from './../../../assets/img/admin.png'
 import superadmin from './../../../assets/img/superadmin.png'
+import bankaccount from './../../../assets/img/account-icon.png'
 
 //Material UI
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -67,13 +68,41 @@ function createPaymentCards(payments) {
     return cards;
 }
 
-export default function ObjectCard({type, users, payments}){
+function createAccountsCards(cuentas) {
+    console.log(cuentas, 'Esto recibo de payments')
+    let cards = cuentas.map((i) => 
+        <div className={`d-flex mb-5 pl-6 pr-6 pt-4 pb-4 justify-content-space-around align-items-center box-shadow-gr-bg object-card-body`}>
+            <img width={50} height={50} className={`mr-10`} src={bankaccount}></img>
+            <div className={`d-flex flex-column`}>
+                <table>
+                    <tr>
+                        <td className={`adjust-id`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Id Cuenta: <span className={`a-light-dark text-medium`}>{i.id}</span></p></td>
+                        <td className={``}><p className={`mt-0 mb-0 ml-12 a-bold-black text-big`}>Numero cuenta: <span className={`a-light-dark text-medium`}>{i.cuenta}</span></p></td>
+                    </tr>
+                </table>
+                <table className={`mt-2`}>
+                    <tr>
+                        <td className="adjust-nombre"><p className={`mt-0 mb-0 a-bold-black text-big`}>Nombre(s): <span className={`a-light-dark text-medium`}>{i.nombres}</span></p></td>
+                        <td><p className={`mt-0 mb-0 a-bold-black text-big `}>Apellido(s): <span className={`a-light-dark text-medium`}>{i.apellidos}</span></p></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    );
+    return cards;
+}
+
+export default function ObjectCard({type, users, payments, cuentas}){
 
     {/* Componente que retorna página de Graduación con temporizador configurado con librería Countdown
         importada de React */}
     return (
         <>
-        {type == 'usuarios' ?
+        {type == 'cuentas'?
+            /* Tarjeta para cuentas bancarias */
+            (createAccountsCards(cuentas))
+        
+        : type == 'usuarios' ?
             /* Tarjeta para usuarios */
             (createUserCards(users))
         :
