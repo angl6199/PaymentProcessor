@@ -51,7 +51,7 @@ export default function LeftMenu({loggedUser, setLoggedUser}){
                     <img className={'ml-14'} width={20} height={20} src={Settings}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Administración</p>
                 </div>
             </Link>
-            <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/nosotros`}>
+            <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/crear-usuario`}>
                 <div className={'d-flex align-items-center option mt-4'}>
                     <img className={'ml-14'} width={20} height={20} src={Question}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear usuario</p>
                 </div>

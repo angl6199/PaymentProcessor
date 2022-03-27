@@ -19,29 +19,16 @@ function createUserCards(users) {
     console.log(users, 'Esto recibo de users')
     let cards = users.map((i) => 
     <>
-        {/* <div className={`d-flex mb-5 pl-6 pr-6 pt-4 pb-5 align-items-center box-shadow-gr-bg object-card-body users`}>
-            <img width={50} height={50} className={`mr-10`} src={i.rol == 'trabajador' ? worker : i.rol == 'admin' ? admin : superadmin}></img>
-            <div className={`d-flex flex-column data-container`}>
-                <div className={`d-flex justify-content-space-between`}>
-                    <p className={`mt-0 mb-0 a-bold-black text-big`}>Id Usuario: <span className={`a-light-dark text-medium`}>{i.id}</span></p>
-                    <p className={`mt-0 mb-0 a-bold-black text-big`}>Rol: <span className={`a-light-dark text-medium`}>{i.rol}</span></p>
-                    <p className={`mt-0 mb-0 a-bold-black text-big`}>Sucursal: <span className={`a-light-dark text-medium`}>{i.sucursal}</span></p>
-                </div>
-                <div className={`d-flex justify-content-space-between mt-3 data-container`}>
-                    <p className={`mt-0 mb-0 a-bold-black text-big`}>Nombre(s): <span className={`a-light-dark text-medium`}>{i.nombres}</span></p>
-                    <p className={`mt-0 mb-0 a-bold-black text-big `}>Apellido(s): <span className={`a-light-dark text-medium`}>{i.apellidos}</span></p>
-                    <p className={`mt-0 mb-0 a-bold-black text-big `}></p>
-                </div>
-            </div>
-        </div> */}
         <div className={`d-flex mb-5 pl-6 pr-6 pt-4 pb-4 align-items-center box-shadow-gr-bg object-card-body users`}>
             <img width={50} height={50} className={`mr-10`} src={i.rol == 'trabajador' ? worker : i.rol == 'admin' ? admin : superadmin}></img>
             <div className={`d-flex flex-column data-container`}>
-                <div className={`d-flex justify-content-space-between`}>
-                        <p className={`mt-0 mb-0 a-bold-black text-big`}>Id Usuario: <span className={`a-light-dark text-medium`}>{i.id}</span></p>
-                        <p className={`mt-0 mb-0 a-bold-black text-big`}>Rol: <span className={`a-light-dark text-medium`}>{i.rol}</span></p>
-                        <p className={`mt-0 mb-0 a-bold-black text-big`}>Sucursal: <span className={`a-light-dark text-medium`}>{i.sucursal}</span></p>
-                </div>
+                <table>
+                    <tr>
+                        <td className={`adjust-id`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Id Usuario: <span className={`a-light-dark text-medium`}>{i.id}</span></p></td>
+                        <td className={`adjust-rol`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Rol: <span className={`a-light-dark text-medium`}>{i.rol}</span></p></td>
+                        <td><p className={`mt-0 mb-0 a-bold-black text-big`}>Email: <span className={`a-light-dark text-medium`}>{i.email}</span></p></td>
+                    </tr>
+                </table>
                 <table className={`mt-2`}>
                     <tr>
                         <td className="adjust-apellido"><p className={`mt-0 mb-0 a-bold-black text-big`}>Nombre(s): <span className={`a-light-dark text-medium`}>{i.nombres}</span></p></td>
@@ -58,18 +45,22 @@ function createUserCards(users) {
 function createPaymentCards(payments) {
     console.log(payments, 'Esto recibo de payments')
     let cards = payments.map((i) => 
-        <div className={`d-flex mb-5 pl-6 pr-6 pt-4 pb-5 justify-content-space-around align-items-center box-shadow-gr-bg object-card-body`}>
-            <img width={50} height={50} className={``} src={i.status == 'aprobado' ? approved : i.status == 'rechazado' ? rejected : pending}></img>
+        <div className={`d-flex mb-5 pl-6 pr-6 pt-4 pb-4 justify-content-space-around align-items-center box-shadow-gr-bg object-card-body`}>
+            <img width={50} height={50} className={`mr-10`} src={i.status == 'aprobado' ? approved : i.status == 'rechazado' ? rejected : pending}></img>
             <div className={`d-flex flex-column`}>
-                <div className={`d-flex justify-content-space-between`}>
-                    <p className={`mt-0 mb-0 a-bold-black text-big`}>Id Pago: <span className={`a-light-dark text-medium`}>{i.id}</span></p>
-                    <p className={`mt-0 mb-0 ml-12 a-bold-black text-big`}>Estado: <span className={`a-light-dark text-medium`}>{i.status}</span></p>
-                    <p className={`mt-0 mb-0 ml-12 a-bold-black text-big`}>Fecha: <span className={`a-light-dark text-medium`}>{i.date}</span></p>
-                </div>
-                <div className={`d-flex justify-content-space-between mt-3`}>
-                    <p className={`mt-0 mb-0 a-bold-black text-big`}>Cuenta origen: <span className={`a-light-dark text-medium`}>{i.ordenante}</span></p>
-                    <p className={`mt-0 mb-0 ml-12 a-bold-black text-big`}>Cuenta destino: <span className={`a-light-dark text-medium`}>{i.beneficiario}</span></p>
-                </div>
+                <table>
+                    <tr>
+                        <td className={`adjust-id`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Id Pago: <span className={`a-light-dark text-medium`}>{i.id}</span></p></td>
+                        <td className={`adjust-status`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Estado: <span className={`a-light-dark text-medium`}>{i.status}</span></p></td>
+                        <td><p className={`mt-0 mb-0 a-bold-black text-big`}>Fecha: <span className={`a-light-dark text-medium`}>{i.date}</span></p></td>
+                    </tr>
+                </table>
+                <table className={`mt-2`}>
+                    <tr>
+                        <td className={`adjust-cuenta`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Cuenta origen: <span className={`a-light-dark text-medium`}>{i.ordenante}</span></p></td>
+                        <td className={``}><p className={`mt-0 mb-0 ml-12 a-bold-black text-big`}>Cuenta destino: <span className={`a-light-dark text-medium`}>{i.beneficiario}</span></p></td>
+                    </tr>
+                </table>
             </div>
         </div>
     );

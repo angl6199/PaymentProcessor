@@ -3,7 +3,7 @@ import React, {useState} from "react"
 
 //Componentes
 import LeftMenu from "../../components/molecules/LeftMenu";
-import Administracion from "../../components/organisms/Administracion";
+import AdministracionUsuario from "../../components/organisms/AdministracionUsuario";
 import HeaderBar from "../../components/organisms/HeaderBar";
 
 //Imágenes
@@ -13,7 +13,7 @@ import HeaderBar from "../../components/organisms/HeaderBar";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
-export default function AdministracionPage({loggedUser, setLoggedUser}){
+export default function AdministracionUsuarioPage({loggedUser, setLoggedUser}){
     const [show, setShow] = useState(false)
 
     {/* Componente que retorna página de Graduación con temporizador configurado con librería Countdown
@@ -24,7 +24,7 @@ export default function AdministracionPage({loggedUser, setLoggedUser}){
             <LeftMenu loggedUser={loggedUser} setLoggedUser={setLoggedUser}></LeftMenu>
             <div className={`d-flex flex-column right-screen`}>
                 <HeaderBar></HeaderBar>
-                <Administracion loggedUser={loggedUser}></Administracion>
+                <AdministracionUsuario loggedUser={loggedUser}></AdministracionUsuario>
             </div>
         </div>
         {console.log(loggedUser)}
