@@ -4,7 +4,7 @@ import React, {useState} from "react"
 //Componentes
 import RegisterForm from "../../components/organisms/RegisterForm";
 //Imágenes
-import Logo from './../../assets/img/mercado-logo.png'
+
 
 //Material UI
 import useMediaQuery from '@mui/material/useMediaQuery';

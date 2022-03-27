@@ -9,18 +9,10 @@ import DropMenuButton from '../../atoms/DropMenuButton/index'
 import SalmonButton from '../../atoms/SalmonButton/index'
 import Loading from '../../molecules/Loading/index'
 import PaymentCard from '../../molecules/ObjectCard/index'
+import CrearOrdenForm from "../../molecules/CrearOrdenForm";
 
 //Imágenes
-import i1 from './../../../assets/img/i1.jpg'
-import i2 from './../../../assets/img/i2.jpg'
-import i3 from './../../../assets/img/i3.jpg'
-import i4 from './../../../assets/img/i4.jpg'
-import i5 from './../../../assets/img/i5.jpg'
-import i6 from './../../../assets/img/i6.jpg'
-import i7 from './../../../assets/img/i7.jpg'
-import i8 from './../../../assets/img/i8.jpg'
-import i9 from './../../../assets/img/i9.webp'
-import i10 from './../../../assets/img/i10.jpg'
+
 
 
 //Material UI
@@ -56,7 +48,7 @@ export default function CrearOrden({loggedUser}){
                 <div className={`d-flex flex-column gray-layout scroll-overflow`}>
                     <div className={`d-flex flex-column ml-12 mr-12 mt-8`}>
                         {/* Contenido de cada pagina */}
-                        
+                        <CrearOrdenForm></CrearOrdenForm>
                     </div>
                 </div>
             }

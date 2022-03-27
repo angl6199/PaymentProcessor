@@ -11,16 +11,6 @@ import Loading from '../../molecules/Loading/index'
 import PaymentCard from '../../molecules/ObjectCard/index'
 
 //Imágenes
-import i1 from './../../../assets/img/i1.jpg'
-import i2 from './../../../assets/img/i2.jpg'
-import i3 from './../../../assets/img/i3.jpg'
-import i4 from './../../../assets/img/i4.jpg'
-import i5 from './../../../assets/img/i5.jpg'
-import i6 from './../../../assets/img/i6.jpg'
-import i7 from './../../../assets/img/i7.jpg'
-import i8 from './../../../assets/img/i8.jpg'
-import i9 from './../../../assets/img/i9.webp'
-import i10 from './../../../assets/img/i10.jpg'
 
 
 //Material UI

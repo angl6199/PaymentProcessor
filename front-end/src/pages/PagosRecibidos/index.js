@@ -7,7 +7,7 @@ import PagosRecibidos from "../../components/organisms/PagosRecibidos";
 import HeaderBar from "../../components/organisms/HeaderBar";
 
 //Imágenes
-import Logo from './../../assets/img/mercado-logo.png'
+
 
 //Material UI
 import useMediaQuery from '@mui/material/useMediaQuery';
