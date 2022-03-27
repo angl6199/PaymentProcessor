@@ -16,28 +16,28 @@ import PaymentCard from '../../molecules/ObjectCard/index'
 //Material UI
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-export default function PagosRecibidos({loggedUser}){
-    const payments = [
+export default function Administracion({loggedUser}){
+    const perfiles = [
         {
             id: `000000001`, 
-            status:'aprobado', 
-            date: '27/03/2022', 
-            ordenante: '020302030203020302', 
-            beneficiario: '010501050105010501'
+            rol:'trabajador', 
+            sucursal: 'Puebla', 
+            nombres: 'Carlos Andres Carlos', 
+            apellidos: 'Conde Besil'
         },
         {
             id: `000000002`, 
-            status:'rechazado', 
-            date: '27/03/2022', 
-            ordenante: '020302030203020302', 
-            beneficiario: '010501050105010501'
+            rol:'admin', 
+            sucursal: 'CDMX', 
+            nombres: 'Javier Arturo', 
+            apellidos: 'Flores Zavala'
         },
         {
             id: `000000003`, 
-            status:'pendiente', 
-            date: '27/03/2022', 
-            ordenante: '020302030203020302', 
-            beneficiario: '010501050105010501'
+            rol:'superadmin', 
+            sucursal: 'Morelos', 
+            nombres: 'Angel', 
+            apellidos: 'Heredia Vazquez'
         }
     ];
     const [ready, setReady] = useState(false)
@@ -63,7 +63,6 @@ export default function PagosRecibidos({loggedUser}){
         console.log('clickeando boton salmon')
     }
 
-
     {/* Componente que retorna la sección izquierda de la página con posibilidad de ocultarse en 
         diseño responsivo mediante hooks */}
     return (
@@ -73,15 +72,14 @@ export default function PagosRecibidos({loggedUser}){
                     <div className={`d-flex flex-column ml-12 mr-12 mt-8`}>
                         {/* Contenido de cada pagina */}
                         <div className={`d-flex justify-content-space-between align-items-center mb-10`}>
-                            <p className={`a-light-dark l mt-0 mb-0`}>Mostrando pagos</p>
+                            <p className={`a-light-dark l mt-0 mb-0`}>Mostrando usuarios</p>
                             <div className={`d-flex`}>
-                                <DropMenuButton classNames={`mr-5`} opciones={['27/03/2022', '26/03/2022', '25/03/2022']}></DropMenuButton>
-                                <DropMenuButton classNames={`mr-5`} opciones={['Todos', 'Aprobados', 'Rechazados', 'Pendientes']}></DropMenuButton>
+                                <DropMenuButton classNames={`mr-5`} opciones={['Todos', 'Trabajadores', 'Admins', 'Super admins']}></DropMenuButton>
                                 <SalmonButton texto={`Aplicar filtros`} funcion={test}></SalmonButton>
                             </div>
                         </div>
-                        <div className={`d-flex flex-column`}>
-                            <PaymentCard type={`pagos`} payments={payments}></PaymentCard>
+                        <div className={`d-flex flex-column align-items-center`}>
+                            <PaymentCard type={`usuarios`} users={perfiles}></PaymentCard>
                         </div>
                     </div>
                 </div>

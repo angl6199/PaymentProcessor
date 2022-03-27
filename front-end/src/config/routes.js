@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from './../pages/Login/index'
 import PagosRecibidos from "./../pages/PagosRecibidos";
 import CrearOrden from "./../pages/CrearOrden";
+import Administracion from "../pages/Administracion";
 
 //Definición de rutas con definición de URL, componente renderizado y definición de exactitud para
 //transformarlas en componente Route, filtrarlas por Switch y visitarlas con Router
@@ -24,6 +25,10 @@ function defineRoutes(loggedUser, setLoggedUser) {
         {
             path: "/:userName/crear-orden",
             element: <CrearOrden loggedUser={loggedUser} setLoggedUser={setLoggedUser} />,
+        },
+        {
+            path: "/:userName/administracion",
+            element: <Administracion loggedUser={loggedUser} setLoggedUser={setLoggedUser} />,
         },
     ]
     
