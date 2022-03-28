@@ -37,34 +37,34 @@ export default function LeftMenu({loggedUser, setLoggedUser}){
             </div>
             <div className="scroll-overflow">
             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Pagos</p>
-            <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/pagos-recibidos`}>
+            <Link className={`text-decoration-none`} to={`/${loggedUser.name}-${loggedUser.apellidos}/pagos-recibidos`}>
                 <div className={'d-flex align-items-center option mt-5'}>
                     <img className={'ml-14'} width={20} height={20} src={Money}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Pagos recibidos</p>
                 </div>
             </Link>
-            <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/crear-orden`}>
+            <Link className={`text-decoration-none`} to={`/${loggedUser.name}-${loggedUser.apellidos}/crear-orden`}>
                 <div className={'d-flex align-items-center option mt-4'}>
                     <img className={'ml-14'} width={20} height={20} src={AddPaymentIcon}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear orden</p>
                 </div>
             </Link>
             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Usuarios</p>
-            <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/administracion-usuarios`}>
+            <Link className={`text-decoration-none`} to={`/${loggedUser.name}-${loggedUser.apellidos}/administracion-usuarios`}>
                 <div className={'d-flex align-items-center option mt-5'}>
                     <img className={'ml-14'} width={20} height={20} src={AdministracionUsuariosIcon}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Administración</p>
                 </div>
             </Link>
-            <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/crear-usuario`}>
+            <Link className={`text-decoration-none`} to={`/${loggedUser.name}-${loggedUser.apellidos}/crear-usuario`}>
                 <div className={'d-flex align-items-center option mt-4'}>
                     <img className={'ml-14'} width={20} height={20} src={AddUserIcon}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear usuario</p>
                 </div>
             </Link>
             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Cuentas banco</p>
-            <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/administracion-cuentas`}>
+            <Link className={`text-decoration-none`} to={`/${loggedUser.name}-${loggedUser.apellidos}/administracion-cuentas`}>
                 <div className={'d-flex align-items-center option mt-5'}>
                     <img className={'ml-14'} width={20} height={20} src={AdministracionCuentasIcon}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Administración</p>
                 </div>
             </Link>
-            <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/crear-cuenta`}>
+            <Link className={`text-decoration-none`} to={`/${loggedUser.name}-${loggedUser.apellidos}/crear-cuenta`}>
                 <div className={'d-flex align-items-center option mt-4'}>
                     <img className={'ml-14'} width={20} height={20} src={AddCuentaIcon}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear cuenta</p>
                 </div>
