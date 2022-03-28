@@ -5,10 +5,12 @@ import { Navigate, Link } from 'react-router-dom'
 //Componentes
 
 //Imágenes
-import Home from './../../../assets/img/home.png'
 import Money from './../../../assets/img/money.png'
-import Settings from './../../../assets/img/settings.png'
-import Question from './../../../assets/img/question.png'
+import AddPaymentIcon from './../../../assets/img/add-payment-icon.png'
+import AdministracionUsuariosIcon from './../../../assets/img/administracion-users-icon.png'
+import AddUserIcon from './../../../assets/img/add-user-icon.png'
+import AdministracionCuentasIcon from './../../../assets/img/administracion-cuentas-icon.png'
+import AddCuentaIcon from './../../../assets/img/add-account-icon.png'
 import Logout from './../../../assets/img/logout.png'
 
 
@@ -37,34 +39,34 @@ export default function LeftMenu({loggedUser, setLoggedUser}){
             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Pagos</p>
             <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/pagos-recibidos`}>
                 <div className={'d-flex align-items-center option mt-5'}>
-                    <img className={'ml-14'} width={20} height={20} src={Home}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Pagos recibidos</p>
+                    <img className={'ml-14'} width={20} height={20} src={Money}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Pagos recibidos</p>
                 </div>
             </Link>
             <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/crear-orden`}>
                 <div className={'d-flex align-items-center option mt-4'}>
-                    <img className={'ml-14'} width={20} height={20} src={Money}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear orden</p>
+                    <img className={'ml-14'} width={20} height={20} src={AddPaymentIcon}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear orden</p>
                 </div>
             </Link>
             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Usuarios</p>
             <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/administracion-usuarios`}>
                 <div className={'d-flex align-items-center option mt-5'}>
-                    <img className={'ml-14'} width={20} height={20} src={Settings}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Administración</p>
+                    <img className={'ml-14'} width={20} height={20} src={AdministracionUsuariosIcon}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Administración</p>
                 </div>
             </Link>
             <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/crear-usuario`}>
                 <div className={'d-flex align-items-center option mt-4'}>
-                    <img className={'ml-14'} width={20} height={20} src={Question}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear usuario</p>
+                    <img className={'ml-14'} width={20} height={20} src={AddUserIcon}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear usuario</p>
                 </div>
             </Link>
             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Cuentas banco</p>
             <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/administracion-cuentas`}>
                 <div className={'d-flex align-items-center option mt-5'}>
-                    <img className={'ml-14'} width={20} height={20} src={Settings}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Administración</p>
+                    <img className={'ml-14'} width={20} height={20} src={AdministracionCuentasIcon}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Administración</p>
                 </div>
             </Link>
             <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/crear-cuenta`}>
                 <div className={'d-flex align-items-center option mt-4'}>
-                    <img className={'ml-14'} width={20} height={20} src={Question}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear cuenta</p>
+                    <img className={'ml-14'} width={20} height={20} src={AddCuentaIcon}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear cuenta</p>
                 </div>
             </Link>
             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Sistema</p>
