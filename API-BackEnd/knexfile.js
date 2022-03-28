@@ -13,7 +13,7 @@
      connection: {
        host: process.env.DB_DEVELOPMENT_HOST || 'localhost',
        port: process.env.DB_DEVELOPMENT_PORT || '3306',
-       database: process.env.DB_DEVELOPMENT_NAME || 'redbicicletas',
+       database: process.env.DB_DEVELOPMENT_NAME || 'gestorpagos',
        user:  process.env.DB_DEVELOPMENT_USER || 'root',
        password: process.env.DB_DEVELOPMENT_PASSWORD || 'root'
      },
@@ -30,7 +30,7 @@
      connection: {
        host: process.env.DB_PRODUCTION_HOST || 'localhost',
        port: process.env.DB_PRODUCTION_PORT || '3306',
-       database: process.env.DB_PRODUCTION_NAME || 'redbicicletas',
+       database: process.env.DB_PRODUCTION_NAME || 'gestorpagos',
        user:  process.env.DB_PRODUCTION_USER || 'root',
        password: process.env.DB_PRODUCTION_PASSWORD || 'root'
      },
