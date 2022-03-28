@@ -20,26 +20,26 @@ import { create } from "@mui/material/styles/createTransitions"
 function createUserCards(users, loggedUser) {
     console.log(users, 'Esto recibo de users')
     let cards = users.map((i) => 
-    <>
-        <div className={`d-flex mb-5 pl-6 pr-6 pt-4 pb-4 align-items-center box-shadow-gr-bg object-card-body users`}>
-            <img width={50} height={50} className={`mr-10`} src={i.rol == 'trabajador' ? worker : i.rol == 'admin' ? admin : superadmin}></img>
-            <div className={`d-flex flex-column data-container`}>
-                <table>
-                    <tr>
-                        <td className={`adjust-id`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Id Usuario: <span className={`a-light-dark text-medium`}>{i.id}</span></p></td>
-                        <td className={`adjust-rol`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Rol: <span className={`a-light-dark text-medium`}>{i.rol}</span></p></td>
-                        <td><p className={`mt-0 mb-0 a-bold-black text-big`}>Email: <span className={`a-light-dark text-medium`}>{i.email}</span></p></td>
-                    </tr>
-                </table>
-                <table className={`mt-2`}>
-                    <tr>
-                        <td className="adjust-apellido"><p className={`mt-0 mb-0 a-bold-black text-big`}>Nombre(s): <span className={`a-light-dark text-medium`}>{i.nombres}</span></p></td>
-                        <td><p className={`mt-0 mb-0 a-bold-black text-big `}>Apellido(s): <span className={`a-light-dark text-medium`}>{i.apellidos}</span></p></td>
-                    </tr>
-                </table>
+        <Link className={`text-decoration-none mb-5`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/editar-usuario/${i.id}`}>
+            <div className={`d-flex pl-6 pr-6 pt-4 pb-4 align-items-center box-shadow-gr-bg object-card-body users`}>
+                <img width={50} height={50} className={`mr-10`} src={i.rol == 'trabajador' ? worker : i.rol == 'admin' ? admin : superadmin}></img>
+                <div className={`d-flex flex-column data-container`}>
+                    <table>
+                        <tr>
+                            <td className={`adjust-id`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Id Usuario: <span className={`a-light-dark text-medium`}>{i.id}</span></p></td>
+                            <td className={`adjust-rol`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Rol: <span className={`a-light-dark text-medium`}>{i.rol}</span></p></td>
+                            <td><p className={`mt-0 mb-0 a-bold-black text-big`}>Email: <span className={`a-light-dark text-medium`}>{i.email}</span></p></td>
+                        </tr>
+                    </table>
+                    <table className={`mt-2`}>
+                        <tr>
+                            <td className="adjust-apellido"><p className={`mt-0 mb-0 a-bold-black text-big`}>Nombre(s): <span className={`a-light-dark text-medium`}>{i.nombres}</span></p></td>
+                            <td><p className={`mt-0 mb-0 a-bold-black text-big `}>Apellido(s): <span className={`a-light-dark text-medium`}>{i.apellidos}</span></p></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
-        </div>
-    </>
+        </Link>
     );
     return cards;
 }
