@@ -74,7 +74,8 @@ function createPaymentCards(payments, loggedUser) {
 function createAccountsCards(cuentas, loggedUser) {
     console.log(cuentas, 'Esto recibo de payments')
     let cards = cuentas.map((i) => 
-        <div className={`d-flex mb-5 pl-6 pr-6 pt-4 pb-4 justify-content-space-around align-items-center box-shadow-gr-bg object-card-body`}>
+    <Link className={`text-decoration-none mb-5`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/editar-cuenta/${i.id}`}>
+        <div className={`d-flex pl-6 pr-6 pt-4 pb-4 justify-content-space-around align-items-center box-shadow-gr-bg object-card-body`}>
             <img width={50} height={50} className={`mr-10`} src={bankaccount}></img>
             <div className={`d-flex flex-column`}>
                 <table>
@@ -91,6 +92,7 @@ function createAccountsCards(cuentas, loggedUser) {
                 </table>
             </div>
         </div>
+    </Link>
     );
     return cards;
 }
