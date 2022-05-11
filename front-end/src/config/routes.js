@@ -1,6 +1,7 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 
 import Login from './../pages/Login/index'
+import SignUp from './../pages/SignUp/index'
 import PagosRecibidos from "./../pages/PagosRecibidos";
 import CrearOrden from "./../pages/CrearOrden";
 import AdministracionUsuario from "../pages/AdministracionUsuario";
@@ -16,14 +17,6 @@ import EditarCuenta from "../pages/EditarCuenta";
 
 function defineRoutes(loggedUser, setLoggedUser) {
     const routes = [
-        {
-            path: '/',
-            element: <Login loggedUser={loggedUser} setLoggedUser={setLoggedUser} />,
-        },
-        {
-            path: "/login",
-            element: <Login loggedUser={loggedUser} setLoggedUser={setLoggedUser} />,
-        },
         {
             path: "/:userName/pagos-recibidos",
             element: <PagosRecibidos loggedUser={loggedUser} setLoggedUser={setLoggedUser} />,
@@ -61,15 +54,35 @@ function defineRoutes(loggedUser, setLoggedUser) {
             element: <EditarCuenta loggedUser={loggedUser} setLoggedUser={setLoggedUser} />,
         },
     ]
+
+    const routes2 = [
+        {
+            path: '/',
+            element: <Login loggedUser={loggedUser} setLoggedUser={setLoggedUser} />,
+        },
+        {
+            path: "/login",
+            element: <Login loggedUser={loggedUser} setLoggedUser={setLoggedUser} />,
+        },
+        {
+            path: "/signup",
+            element: <SignUp loggedUser={loggedUser} setLoggedUser={setLoggedUser} />,
+        },
+    ]
     
     let views = routes.map((i) => 
-        <Route exact path={i.path} element={i.element}></Route>
+        <Route exact path={i.path} element={loggedUser == false || loggedUser == undefined ? <Navigate to="/" /> : i.element}></Route>
+    );
+
+    let views2 = routes2.map((i) => 
+        <Route exact path={i.path} element={loggedUser != false && loggedUser != undefined ? <Navigate to={`/${loggedUser.nombre}/pagos-recibidos`} /> : i.element}></Route>
     );
     
     return (
             <Router>
                 <Routes>
                     {views}
+                    {views2}
                 </Routes>
             </Router>
     );

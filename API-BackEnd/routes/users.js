@@ -8,5 +8,7 @@ router.post('/register', userController.user_register);
 
 router.post('/login', userController.user_login);
 
+router.get('/validate', userController.user_session)
+
 
 module.exports = router;

@@ -24,7 +24,7 @@ export default function PagosRecibidosPage({loggedUser, setLoggedUser}){
             <LeftMenu loggedUser={loggedUser} setLoggedUser={setLoggedUser}></LeftMenu>
             <div className={`d-flex flex-column right-screen`}>
                 <HeaderBar></HeaderBar>
-                <PagosRecibidos loggedUser={loggedUser}></PagosRecibidos>
+                <PagosRecibidos loggedUser={loggedUser} setLoggedUser={setLoggedUser}></PagosRecibidos>
             </div>
         </div>
         {console.log(loggedUser)}

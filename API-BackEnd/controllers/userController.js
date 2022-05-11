@@ -1,25 +1,38 @@
-const user = require('../models/users')
+const Usuario = require('../models/usuario')
+const passport = require('../config/passport')
 
 exports.user_register = (req, res)=>{
-    user.crearUsuario(req.body)
-    .then((data) => {
-        res.status(201).send('Usuario agregado correctamente')
-    })
-    .catch(error => {
-        res.status(500).json({message: 'No fue posible agregar el usuario.', error: error.message})
+    if(req.body.password != req.body.confirm_password){
+        res.status(500).json('Contrasenas no coinciden')
+    }
+    Usuario.create({ nombre: req.body.nombre, apellidos: req.body.apellidos, email: req.body.email, password: req.body.password }, function(err, nuevoUsuario) {
+        if(err){
+            res.status(500).json('Este email ya está en uso con otro usuario')
+            console.log('Este email ya está en uso con otro usuario')
+        }
+        else{
+            res.status(200).json()
+            nuevoUsuario.enviar_mail_bienvenida()
+        }
     })
 }
 
-exports.user_login = (req, res)=>{
-    user.validarUsuario(req.body)
-    .then((data) => {
-        if (data == false) {
-            res.status(500).send(false)  
-        } else{
-            res.status(201).send(data)
-        }
+exports.user_login = (req, res, next)=>{
+    passport.authenticate('local', function(err, usuario, info){
+    if(err) res.status(500).json()
+    if(!usuario) res.status(201).json()
+    if(usuario.verificado == false) res.status(202).json()
+    req.logIn(usuario, function(err){
+        if(err) res.status(500).json()
+        res.status(200).json(usuario)
     })
-    .catch(error => {
-        res.status(500).json({message: 'Usuario no valido', error: error.message})
-    })
+  })(req, res, next)
+}
+
+exports.user_session = (req, res, next) =>{
+    if (req.isAuthenticated()) {
+        res.status(200).json(req.user)
+    } else{
+        res.status(200).json(req.isAuthenticated())
+    }
 }
