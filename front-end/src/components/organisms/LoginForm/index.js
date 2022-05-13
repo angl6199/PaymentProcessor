@@ -38,7 +38,7 @@ export default function LoginForm({loggedUser, setLoggedUser}){
         }
         loginRequest(credentials).then((response)=>{
             if (response.status == 200) {
-                Cookies.set('loggedUser', `{"nombre": "${response.data.nombre}", "apellidos": "${response.data.apellidos}", "email": "${response.data.email}", "rol": "${response.data.rol}"}`, {expires: 7})
+                Cookies.set('loggedUser', `{"id": "${response.data._id}"}`, {expires: 7})
                 window.location.reload(false);
             }
             if (response.status == 201){
@@ -51,7 +51,6 @@ export default function LoginForm({loggedUser, setLoggedUser}){
             }
             else{
                 setError("Credenciales inválidas")
-                displayError()
             }
         }).catch((error)=>{
             console.log(error)

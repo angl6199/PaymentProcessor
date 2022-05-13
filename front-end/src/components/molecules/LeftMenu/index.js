@@ -39,15 +39,20 @@ export default function LeftMenu({loggedUser, setLoggedUser}){
                 <p className={`a-light-white l mt-4 mb-4`}>Gestor de Pagos</p>
             </div>
             <div className="scroll-overflow">
-            <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Pagos</p>
+            <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Transacciones</p>
             <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellidos}/pagos-recibidos`}>
                 <div className={'d-flex align-items-center option mt-5'}>
-                    <img className={'ml-14'} width={20} height={20} src={Money}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Pagos recibidos</p>
+                    <img className={'ml-14'} width={20} height={20} src={Money}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Pagos realizados</p>
                 </div>
             </Link>
             <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellidos}/crear-orden`}>
                 <div className={'d-flex align-items-center option mt-4'}>
-                    <img className={'ml-14'} width={20} height={20} src={AddPaymentIcon}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear orden</p>
+                    <img className={'ml-14'} width={20} height={20} src={AddPaymentIcon}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear pago</p>
+                </div>
+            </Link>
+            <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellidos}/abonos-recibidos`}>
+                <div className={'d-flex align-items-center option mt-5'}>
+                    <img className={'ml-14'} width={20} height={20} src={Money}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Abonos recibidos</p>
                 </div>
             </Link>
             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Usuarios</p>

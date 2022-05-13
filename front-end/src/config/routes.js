@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-d
 import Login from './../pages/Login/index'
 import SignUp from './../pages/SignUp/index'
 import PagosRecibidos from "./../pages/PagosRecibidos";
+import AbonosRecibidos from "../pages/AbonosRecibidos";
 import CrearOrden from "./../pages/CrearOrden";
 import AdministracionUsuario from "../pages/AdministracionUsuario";
 import CrearUsuario from "../pages/CrearUsuario";
@@ -20,6 +21,10 @@ function defineRoutes(loggedUser, setLoggedUser) {
         {
             path: "/:userName/pagos-recibidos",
             element: <PagosRecibidos loggedUser={loggedUser} setLoggedUser={setLoggedUser} />,
+        },
+        {
+            path: "/:userName/abonos-recibidos",
+            element: <AbonosRecibidos loggedUser={loggedUser} setLoggedUser={setLoggedUser} />,
         },
         {
             path: "/:userName/crear-orden",

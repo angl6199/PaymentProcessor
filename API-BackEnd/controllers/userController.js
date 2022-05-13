@@ -17,6 +17,12 @@ exports.user_register = (req, res)=>{
     })
 }
 
+exports.get_user_by_id = (req, res)=>{
+    Usuario.findById(req.params.id, function(err, usuario){
+        res.json(usuario)
+    })
+}
+
 exports.user_login = (req, res, next)=>{
     passport.authenticate('local', function(err, usuario, info){
     if(err) res.status(500).json()

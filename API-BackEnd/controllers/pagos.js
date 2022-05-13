@@ -3,25 +3,27 @@ const Usuario = require('../models/usuario')
 
 
 exports.pagos_list = (req, res)=>{
-    var ordenante = getUserbyId(req.params.id)
-    ordenante.then(function(ordenante){
-        var pagos = getPagosByUser(ordenante)
-        pagos.then(function(pagos){
-            res.status(200).json(pagos)
-        })
+    var ObjectId = require('mongoose').Types.ObjectId; 
+
+    Pago.find({_ordenanteId: new ObjectId(req.params.id)}, function(err, pagos){
+        res.send(pagos)
     })
 }
 
-function getUserbyId(id){
+exports.abonos_list = (req, res)=>{
     var ObjectId = require('mongoose').Types.ObjectId; 
-    var promise = Usuario.findOne({_id: new ObjectId(id)}).exec()
-    return promise
+
+    Pago.find({_beneficiarioId: new ObjectId(req.params.id)}, function(err, pagos){
+        res.send(pagos)
+    })
 }
 
-function getPagosByUser(user){
-    var promise = Pago.find({_ordenanteId: user._id}).exec()
-    return promise
+exports.pago_por_Id = (req, res)=>{
+    Pago.findById(req.params.id, function(err, pago){
+        res.send(pago)
+    })
 }
+
 
 exports.pago_create = (req, res) =>{
     Usuario.findOne({email: req.body.emailOrdenante}, function(err, ordenante){

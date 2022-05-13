@@ -1,9 +1,11 @@
 //React
 import React, {useState} from "react"
+import { useParams } from 'react-router-dom'
+
 
 //Componentes
 import LeftMenu from "../../components/molecules/LeftMenu";
-import CrearOrden from "../../components/organisms/CrearOrden";
+import AbonosRecibidos from "../../components/organisms/AbonosRecibidos";
 import HeaderBar from "../../components/organisms/HeaderBar";
 
 //Imágenes
@@ -13,7 +15,7 @@ import HeaderBar from "../../components/organisms/HeaderBar";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
-export default function CrearOrdenPage({loggedUser, setLoggedUser}){
+export default function AbonosRecibidosPage({loggedUser, setLoggedUser}){
     const [show, setShow] = useState(false)
 
     {/* Componente que retorna página de Graduación con temporizador configurado con librería Countdown
@@ -23,8 +25,8 @@ export default function CrearOrdenPage({loggedUser, setLoggedUser}){
         <div className={`d-flex`}>
             <LeftMenu loggedUser={loggedUser} setLoggedUser={setLoggedUser}></LeftMenu>
             <div className={`d-flex flex-column right-screen`}>
-                <HeaderBar loggedUser={loggedUser} titulo={'Crear Pago'}></HeaderBar>
-                <CrearOrden loggedUser={loggedUser}></CrearOrden>
+                <HeaderBar loggedUser={loggedUser} titulo={'Abonos recibidos'}></HeaderBar>
+                <AbonosRecibidos loggedUser={loggedUser} setLoggedUser={setLoggedUser}></AbonosRecibidos>
             </div>
         </div>
         {console.log(loggedUser)}

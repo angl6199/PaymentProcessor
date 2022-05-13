@@ -17,6 +17,11 @@ import bankaccount from './../../../assets/img/account-icon.png'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { create } from "@mui/material/styles/createTransitions"
 
+function formatoNumero(num){
+    num = parseFloat(num)
+    return num.toLocaleString('en')
+}
+
 function createUserCards(users, loggedUser) {
     console.log(users, 'Esto recibo de users')
     let cards = users.map((i) => 
@@ -26,7 +31,7 @@ function createUserCards(users, loggedUser) {
                 <div className={`d-flex flex-column data-container`}>
                     <table>
                         <tr>
-                            <td className={`adjust-id`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Id Usuario: <span className={`a-light-dark text-medium`}>{i.id}</span></p></td>
+                            <td className={`adjust-id2`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Id Usuario: <span className={`a-light-dark text-medium`}>{i.id}</span></p></td>
                             <td className={`adjust-rol`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Rol: <span className={`a-light-dark text-medium`}>{i.rol}</span></p></td>
                             <td><p className={`mt-0 mb-0 a-bold-black text-big`}>Email: <span className={`a-light-dark text-medium`}>{i.email}</span></p></td>
                         </tr>
@@ -45,23 +50,46 @@ function createUserCards(users, loggedUser) {
 }
 
 function createPaymentCards(payments, loggedUser) {
-    console.log(payments, 'Esto recibo de payments')
     let cards = payments.map((i) => 
-        <Link className={`text-decoration-none mb-5`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/editar-orden/${i.id}`}>
+        <Link className={`text-decoration-none mb-5`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/editar-orden/${i._id}`}>
             <div className={`d-flex pl-6 pr-6 pt-4 pb-4 justify-content-space-around align-items-center box-shadow-gr-bg object-card-body`}>
-                <img width={50} height={50} className={`mr-10`} src={i.status == 'aprobado' ? approved : i.status == 'rechazado' ? rejected : pending}></img>
+                <img width={50} height={50} className={`mr-10`} src={i.estado == 'Completado' ? approved : i.estado == 'Rechazado' ? rejected : pending}></img>
                 <div className={`d-flex flex-column`}>
                     <table>
                         <tr>
-                            <td className={`adjust-id`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Id Pago: <span className={`a-light-dark text-medium`}>{i.id}</span></p></td>
-                            <td className={`adjust-status`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Estado: <span className={`a-light-dark text-medium`}>{i.status}</span></p></td>
-                            <td><p className={`mt-0 mb-0 a-bold-black text-big`}>Fecha: <span className={`a-light-dark text-medium`}>{i.date}</span></p></td>
+                            <td className={`adjust-id`}><p className={`mt-0 mb-0 a-bold-black text-big adjust-id`}>Id Pago: <span className={`a-light-dark text-medium`}>{i._id}</span></p></td>
+                            <td className={`adjust-status`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Estado: <span className={`a-light-dark text-medium`}>{i.estado}</span></p></td>
                         </tr>
                     </table>
                     <table className={`mt-2`}>
                         <tr>
-                            <td className={`adjust-cuenta`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Cuenta origen: <span className={`a-light-dark text-medium`}>{i.ordenante}</span></p></td>
-                            <td className={``}><p className={`mt-0 mb-0 ml-12 a-bold-black text-big`}>Cuenta destino: <span className={`a-light-dark text-medium`}>{i.beneficiario}</span></p></td>
+                            <td className={`adjust-cuenta`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Cuenta destino: <span className={`a-light-dark text-medium`}>{i._beneficiarioId}</span></p></td>
+                            <td className={`adjust-monto`}><p className={`mt-0 mb-0 a-bold-black text-big adjust-id`}>Monto: <span className={`a-light-dark text-medium`}>{formatoNumero(i.monto)}</span></p></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </Link>
+    );
+    return cards;
+}
+
+function createAbonoCards(abonos, loggedUser) {
+    let cards = abonos.map((i) => 
+        <Link className={`text-decoration-none mb-5`} to={`/${loggedUser.nombre}-${loggedUser.apellido}/editar-orden/${i._id}`}>
+            <div className={`d-flex pl-6 pr-6 pt-4 pb-4 justify-content-space-around align-items-center box-shadow-gr-bg object-card-body`}>
+                <img width={50} height={50} className={`mr-10`} src={i.estado == 'Completado' ? approved : i.estado == 'Rechazado' ? rejected : pending}></img>
+                <div className={`d-flex flex-column`}>
+                    <table>
+                        <tr>
+                            <td className={`adjust-id`}><p className={`mt-0 mb-0 a-bold-black text-big adjust-id`}>Id Pago: <span className={`a-light-dark text-medium`}>{i._id}</span></p></td>
+                            <td className={`adjust-status`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Estado: <span className={`a-light-dark text-medium`}>{i.estado}</span></p></td>
+                        </tr>
+                    </table>
+                    <table className={`mt-2`}>
+                        <tr>
+                            <td className={`adjust-cuenta`}><p className={`mt-0 mb-0 a-bold-black text-big`}>Cuenta origen: <span className={`a-light-dark text-medium`}>{i._ordenanteId}</span></p></td>
+                            <td className={`adjust-monto`}><p className={`mt-0 mb-0 a-bold-black text-big adjust-id`}>Monto: <span className={`a-light-dark text-medium`}>{formatoNumero(i.monto)}</span></p></td>
                         </tr>
                     </table>
                 </div>
@@ -110,6 +138,10 @@ export default function ObjectCard({type, users, payments, cuentas, loggedUser})
         : type == 'usuarios' ?
             /* Tarjeta para usuarios */
             (createUserCards(users, loggedUser))
+
+        : type == 'abonos' ?
+            /* Tarjeta para usuarios */
+            (createAbonoCards(payments, loggedUser))
         :
             /* Tarjeta para usuarios */
             (createPaymentCards(payments, loggedUser))

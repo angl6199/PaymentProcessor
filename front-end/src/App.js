@@ -14,20 +14,32 @@ import "./App.scss"
 export default class App extends React.Component {
   constructor(props){
     super(props);
+    this.state = {
+      ready: undefined
+  }
   }
 
   componentWillMount() {
     console.log(Cookies.get('loggedUser'))
     let temp = Cookies.get('loggedUser')
-    if (temp) {
+    if (temp!=undefined) {
       temp = temp.trim()
       temp = JSON.parse(temp)
+      fetch(`http://localhost:8000/users/getOne/${temp.id}`)
+        .then(response => response.json())
+        .then((usuario) => {
+            temp = usuario
+            this.loggedUser = temp
+            this.setState({
+              ready: true
+            })
+      })
+    } else{
+        this.setState({
+          ready: false
+        })
     }
-    this.loggedUser = temp
-    console.log(temp)
   }
-
-  
 
   setLoggedUser(state) {
     this.loggedUser = state
@@ -36,7 +48,8 @@ export default class App extends React.Component {
   render() {
     return (
       <>
-        {Router(this.loggedUser, this.setLoggedUser)}
+        {console.log(this.loggedUser, "Esto se va a pasar del usuario")}
+        {this.state.ready != undefined && Router(this.loggedUser, this.setLoggedUser)}
       </>
   
     );

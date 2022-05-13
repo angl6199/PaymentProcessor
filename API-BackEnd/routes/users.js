@@ -8,7 +8,9 @@ router.post('/register', userController.user_register);
 
 router.post('/login', userController.user_login);
 
-router.get('/validate', userController.user_session)
+router.get('/validate', userController.user_session);
+
+router.get('/getOne/:id', userController.get_user_by_id);
 
 
 module.exports = router;

@@ -48,7 +48,7 @@ export default function CrearOrden({loggedUser}){
                 <div className={`d-flex flex-column gray-layout scroll-overflow`}>
                     <div className={`d-flex flex-column ml-12 mr-12 mt-8`}>
                         {/* Contenido de cada pagina */}
-                        <CrearOrdenForm></CrearOrdenForm>
+                        <CrearOrdenForm loggedUser={loggedUser}></CrearOrdenForm>
                     </div>
                 </div>
             }

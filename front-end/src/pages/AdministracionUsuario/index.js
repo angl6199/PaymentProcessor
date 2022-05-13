@@ -23,7 +23,7 @@ export default function AdministracionUsuarioPage({loggedUser, setLoggedUser}){
         <div className={`d-flex`}>
             <LeftMenu loggedUser={loggedUser} setLoggedUser={setLoggedUser}></LeftMenu>
             <div className={`d-flex flex-column right-screen`}>
-                <HeaderBar></HeaderBar>
+                <HeaderBar loggedUser={loggedUser} titulo={'Administración de usuarios'} ></HeaderBar>
                 <AdministracionUsuario loggedUser={loggedUser}></AdministracionUsuario>
             </div>
         </div>

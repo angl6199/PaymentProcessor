@@ -1,5 +1,43 @@
 import axios from 'axios';
 
+export async function getCargo(params){
+    try{
+        const response = await axios({
+            url: `http://localhost:8000/pagos/${params}`,
+            method: `GET`,
+        })
+        return response
+    }catch(e){
+        return e
+    }
+}
+
+export async function getCargos(params){
+    try{
+        const response = await axios({
+            url: `http://localhost:8000/pagos/${params}`,
+            method: `GET`,
+        })
+        return response
+    }catch(e){
+        return e
+    }
+}
+
+export async function crearPago(data){
+    try{
+        const response = await axios({
+            method: `POST`,
+            data: data,
+            withCredentials: true,
+            url: `http://localhost:8000/pagos/create`,
+        })
+        return response
+    }catch(e){
+        return e
+    }
+}
+
 export async function loginRequest(data) {
     try{
         const response = await axios({
