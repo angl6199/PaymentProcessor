@@ -38,10 +38,10 @@ exports.pago_create = (req, res) =>{
                             Pago.add(pago)
                             res.status(200).json("Pago realizado correctamente")
                 }else{
-                    res.status(502).json("Fondos insuficientes")
+                    res.json("Fondos insuficientes")
                 }
             }else{
-                res.status(503).json("Beneficiario no encontrado")
+                res.json("No hay beneficiario")
             }
         })
     })

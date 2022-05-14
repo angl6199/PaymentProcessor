@@ -23,7 +23,7 @@ export default function CrearUsuarioPage({loggedUser, setLoggedUser}){
         <div className={`d-flex`}>
             <LeftMenu loggedUser={loggedUser} setLoggedUser={setLoggedUser}></LeftMenu>
             <div className={`d-flex flex-column right-screen`}>
-                <HeaderBar></HeaderBar>
+                <HeaderBar loggedUser={loggedUser} titulo={'Crear Usuario'}></HeaderBar>
                 <CrearUsuario loggedUser={loggedUser}></CrearUsuario>
             </div>
         </div>

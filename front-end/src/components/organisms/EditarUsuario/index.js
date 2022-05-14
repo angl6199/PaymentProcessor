@@ -18,41 +18,31 @@ import EditarUsuarioForm from "../../molecules/EditarUsuarioForm";
 //Material UI
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-export default function EditarUsuario({loggedUser}){
-    const [ready, setReady] = useState(false)
-    const [ready2, setReady2] = useState(false)
-    const [break2, setBreak2] = useState(false)
-
-    const phone = useMediaQuery('(max-width:767px)');
-    const tablet = useMediaQuery('(min-width:768px)');
-    const desktop = useMediaQuery('(min-width:1000px)');
-
-    if (break2 == false) {
-        setBreak2(true)
-        setReady(true)
-        setTimeout(() => {
-            setReady2(true)
-        }, 1000);
+export default class EditarUsuario extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            usuario: []
+        }
     }
 
-    function test(e) {
-        e.preventDefault();
-        console.log('clickeando boton salmon')
+    componentWillMount() {
+        fetch(`http://localhost:8000/users/getOne/${this.props.id_Editado}`)
+          .then(response => response.json())
+          .then((usuario) => {
+              console.log(usuario, "Esto da la API")
+            this.setState({usuario: usuario})
+          })
     }
 
-    {/* Componente que retorna la sección izquierda de la página con posibilidad de ocultarse en 
-        diseño responsivo mediante hooks */}
-    return (
-        <>
-            { ready &&
-                <div className={`d-flex flex-column gray-layout scroll-overflow`}>
+    render(){
+        return(
+            <div className={`d-flex flex-column gray-layout scroll-overflow`}>
                     <div className={`d-flex flex-column ml-12 mr-12 mt-8`}>
                         {/* Contenido de cada pagina */}
-                        <EditarUsuarioForm loggedUser={loggedUser}></EditarUsuarioForm>
+                        <EditarUsuarioForm targetUser={this.props.id_Editado} loggedUser={this.state.usuario}></EditarUsuarioForm>
                     </div>
-                </div>
-            }
-            <Loading hide={ready2}></Loading>
-        </>
-    )
+            </div>
+        )
+    }
 }

@@ -23,7 +23,7 @@ export default function EditarCuentaPage({loggedUser, setLoggedUser}){
         <div className={`d-flex`}>
             <LeftMenu loggedUser={loggedUser} setLoggedUser={setLoggedUser}></LeftMenu>
             <div className={`d-flex flex-column right-screen`}>
-                <HeaderBar></HeaderBar>
+                <HeaderBar loggedUser={loggedUser} titulo={'Edición de cuenta'}></HeaderBar>
                 <EditarCuenta loggedUser={loggedUser}></EditarCuenta>
             </div>
         </div>

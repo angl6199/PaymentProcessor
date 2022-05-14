@@ -16,58 +16,26 @@ import PaymentCard from '../../molecules/ObjectCard/index'
 //Material UI
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-export default function AdministracionUsuario({loggedUser}){
-    const perfiles = [
-        {
-            id: `1`, 
-            rol:'trabajador', 
-            email: 'carlos.andres@gmail.com', 
-            nombres: 'Carlos Andres Carlos', 
-            apellidos: 'Conde Besil'
-        },
-        {
-            id: `2`, 
-            rol:'admin', 
-            email: 'javier.arturo@gmail.com', 
-            nombres: 'Javier Arturo', 
-            apellidos: 'Flores Zavala'
-        },
-        {
-            id: `3`, 
-            rol:'superadmin', 
-            email: 'angel.heredia@gmail.com', 
-            nombres: 'Angel', 
-            apellidos: 'Heredia Vazquez'
+export default class AdministracionUsuario extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            perfiles: []
         }
-    ];
-    const [ready, setReady] = useState(false)
-    const [ready2, setReady2] = useState(false)
-    const [break2, setBreak2] = useState(false)
-
-    const phone = useMediaQuery('(max-width:767px)');
-    const tablet = useMediaQuery('(min-width:768px)');
-    const desktop = useMediaQuery('(min-width:1000px)');
-
-    
-
-    if (break2 == false) {
-        setBreak2(true)
-        setReady(true)
-        setTimeout(() => {
-            setReady2(true)
-        }, 1000);
     }
 
-    function test(e) {
-        e.preventDefault();
-        console.log('clickeando boton salmon')
+    componentWillMount() {
+        fetch(`http://localhost:8000/users/all`)
+          .then(response => response.json())
+          .then((perfiles) => {
+              console.log(perfiles, "Esto da la API")
+            this.setState({perfiles: perfiles})
+          })
     }
 
-    {/* Componente que retorna la sección izquierda de la página con posibilidad de ocultarse en 
-        diseño responsivo mediante hooks */}
-    return (
-        <>
-            { ready &&
+    render(){
+        return(
+            <>
                 <div className={`d-flex flex-column gray-layout scroll-overflow`}>
                     <div className={`d-flex flex-column ml-12 mr-12 mt-8`}>
                         {/* Contenido de cada pagina */}
@@ -75,16 +43,16 @@ export default function AdministracionUsuario({loggedUser}){
                             <p className={`a-light-dark l mt-0 mb-0`}>Mostrando usuarios</p>
                             <div className={`d-flex`}>
                                 <DropMenuButton classNames={`mr-5`} opciones={['Todos', 'Trabajadores', 'Admins', 'Super admins']}></DropMenuButton>
-                                <SalmonButton texto={`Aplicar filtros`} funcion={test}></SalmonButton>
+                                <SalmonButton texto={`Aplicar filtros`} ></SalmonButton>
                             </div>
                         </div>
                         <div className={`d-flex flex-column align-items-center`}>
-                            <PaymentCard type={`usuarios`} users={perfiles} loggedUser={loggedUser}></PaymentCard>
+                            <PaymentCard type={`usuarios`} users={this.state.perfiles} loggedUser={this.props.loggedUser}></PaymentCard>
                         </div>
                     </div>
                 </div>
-            }
-            <Loading hide={ready2}></Loading>
-        </>
-    )
+            
+            </>
+        )
+    }
 }

@@ -23,6 +23,7 @@ export default function SignUpForm({loggedUser, setLoggedUser}){
     const [password, setPassword] = useState()
     const [confirm_password, setConfirm_password] = useState()
     const [redirect, setredirect] = useState(false)
+    const [error, setError] = useState()
 
     const phone = useMediaQuery('(max-width:767px)');
     const tablet = useMediaQuery('(min-width:768px)');
@@ -38,14 +39,27 @@ export default function SignUpForm({loggedUser, setLoggedUser}){
             confirm_password: confirm_password
         }
         registerRequest(credentials).then((response)=>{
-            if (response.status == 200) {
-                setredirect(true)
-            } else{
+            let flag = false
+            console.log(response, "Atencion")
+            if (response.data == 'Email ocupado'){
+                flag = true
+                setError("Email ya ocupado")
                 displayError()
             }
-        }).catch((error)=>{
-            console.log(error)
-        })
+            if (response.data == 'Contrasenas no coinciden') {
+                flag = true
+                setError("Contraseñas no coinciden")
+                displayError()
+            }
+            if(response.data == "Campos no validos"){
+                flag = true
+                setError("Campos no válidos")
+                displayError()
+            }
+            else if(response.status == 200 && response.data != 'Email ocupado' && response.data != 'Contraseñas no coinciden' && response.data != 'Campos no validos' && flag==false){
+                window.location.replace(`http://localhost:3000/login`)
+            }
+    })
     }
 
     function displayError() {
@@ -82,7 +96,7 @@ export default function SignUpForm({loggedUser, setLoggedUser}){
                     </label>
                     <div id={`error-container`} className={``}>
                         <div className={`error-container`}>
-                        <p className={`a-regular-red`}>Campos no válidos</p>
+                        <p className={`a-regular-red`}>{error}</p>
                         </div>
                     </div>
                     <OrangeButton variant={1}></OrangeButton>

@@ -1,5 +1,19 @@
 import axios from 'axios';
 
+export async function editarUsuario(data, id){
+    try{
+        const response = await axios({
+            method: `POST`,
+            data: data,
+            withCredentials: true,
+            url: `http://localhost:8000/users/update/${id}`,
+        })
+        return response
+    }catch(e){
+        return e
+    }
+}
+
 export async function getCargo(params){
     try{
         const response = await axios({

@@ -25,38 +25,6 @@ export default class PagosRecibidos extends React.Component {
         }
     }
 
-    updateState(value) {
-        this.setState({
-            pagos: value
-        })
-    }
-
-    /* componentWillMount(){
-        var pagosRecibidos = getCargos(this.props.loggedUser.id)
-        pagosRecibidos.then(function(pagos){
-            this.setState({
-                pagos: pagos
-            })
-            console.log(pagos)
-            console.log(this.pagos)
-        })
-    } */
-
-    /* componentWillUnmount(){
-        this.setState({
-            pagos: []
-        })
-    } */
-
-    /* componentWillMount() {
-        var pagosRecibidos = getCargos(this.props.loggedUser.id)
-        pagosRecibidos.then(function (pagos) {
-            aquiHayConsulta()
-            console.log(pagos)
-            console.log(this.pagos)
-        })
-    } */
-
     componentWillMount() {
         fetch(`http://localhost:8000/pagos/${this.props.loggedUser._id}`)
           .then(response => response.json())
@@ -64,7 +32,7 @@ export default class PagosRecibidos extends React.Component {
               console.log(pagos, "Esto da la API")
             this.setState({pagos: pagos})
           })
-      }
+    }
       
 
 
@@ -101,7 +69,3 @@ export default class PagosRecibidos extends React.Component {
         )
     }
 }
-
-{/* Componente que retorna la sección izquierda de la página con posibilidad de ocultarse en 
-        diseño responsivo mediante hooks */}
-

@@ -48,7 +48,7 @@ export default function CrearUsuario({loggedUser}){
                 <div className={`d-flex flex-column gray-layout scroll-overflow`}>
                     <div className={`d-flex flex-column ml-12 mr-12 mt-8`}>
                         {/* Contenido de cada pagina */}
-                        <CrearUsuarioForm></CrearUsuarioForm>
+                        <CrearUsuarioForm loggedUser={loggedUser}></CrearUsuarioForm>
                     </div>
                 </div>
             }

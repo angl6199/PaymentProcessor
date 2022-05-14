@@ -66,7 +66,7 @@ export default function LeftMenu({loggedUser, setLoggedUser}){
                     <img className={'ml-14'} width={20} height={20} src={AddUserIcon}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear usuario</p>
                 </div>
             </Link>
-            <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Cuentas banco</p>
+{/*             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Cuentas banco</p>
             <Link className={`text-decoration-none`} to={`/${loggedUser.nombre}-${loggedUser.apellidos}/administracion-cuentas`}>
                 <div className={'d-flex align-items-center option mt-5'}>
                     <img className={'ml-14'} width={20} height={20} src={AdministracionCuentasIcon}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Administración</p>
@@ -76,7 +76,7 @@ export default function LeftMenu({loggedUser, setLoggedUser}){
                 <div className={'d-flex align-items-center option mt-4'}>
                     <img className={'ml-14'} width={20} height={20} src={AddCuentaIcon}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear cuenta</p>
                 </div>
-            </Link>
+            </Link> */}
             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Sistema</p>
             <div onClick={handleLogout} className={'d-flex align-items-center option mt-4 mb-4 cursor-pointer'}>
                 <img className={'ml-14 mt-0'} width={20} height={20} src={Logout}></img><p className={`ml-3 a-light-dark text-medium mt-0 mb-0`}>Salir</p>

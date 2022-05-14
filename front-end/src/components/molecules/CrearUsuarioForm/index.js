@@ -3,6 +3,7 @@ import React, {useState} from "react"
 
 //Componentes
 import SalmonButton from './../../atoms/SalmonButton/index'
+import { registerRequest } from "../../../services";
 
 //Imágenes
 import usersIcon from './../../../assets/img/users-icon.png'
@@ -11,7 +12,7 @@ import usersIcon from './../../../assets/img/users-icon.png'
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
-export default function CrearUsuarioForm({type, status}){
+export default function CrearUsuarioForm({type, status, loggedUser}){
     const [nombres, setNombres] = useState();
     const [apellidos, setApellidos] = useState();
     const [rol, setRol] = useState();
@@ -19,10 +20,48 @@ export default function CrearUsuarioForm({type, status}){
     const [password, setPassword] = useState();
     const [password2, setPassword2] = useState();
 
-    function printValues(e) {
+    const [error, setError] = useState()
+
+    function crearUsuario(e) {
         e.preventDefault();
-        let todos = [nombres, apellidos, rol, email, password, password2]
-        console.log(todos);
+        let credentials = {
+            nombre: nombres,
+            apellidos: apellidos,
+            rol: rol,
+            email: email,
+            password: password,
+            confirm_password: password2
+        }
+        registerRequest(credentials).then((response)=>{
+            let flag = false
+            console.log(response, "Atencion")
+            if (response.data == 'Email ocupado'){
+                flag = true
+                setError("Email ya ocupado")
+                displayError()
+            }
+            if (response.data == 'Contrasenas no coinciden') {
+                flag = true
+                setError("Contraseñas no coinciden")
+                displayError()
+            }
+            if(response.data == "Campos no validos"){
+                flag = true
+                setError("Campos no válidos")
+                displayError()
+            }
+            else if(response.status == 200 && response.data != 'Email ocupado' && response.data != 'Contraseñas no coinciden' && response.data != 'Campos no validos' && flag==false){
+                window.location.replace(`http://localhost:3000/${loggedUser.nombre}-${loggedUser.apellidos}/administracion-usuarios`)
+            }
+        })
+    }
+    function displayError() {
+        var element = document.getElementById('error-container') 
+        element.className = 'error-effect'
+
+        setTimeout(() => {
+            element.className = ''
+        }, 1500);
     }
 
     {/* Componente que retorna página de Graduación con temporizador configurado con librería Countdown
@@ -58,8 +97,13 @@ export default function CrearUsuarioForm({type, status}){
                 <label className={`a-light-dark text-big d-flex justify-content-space-between mb-10`}>Confirmar contraseña: 
                         <input autoComplete={'off'} className={`text-normal a-light-dark crear-orden-input ml-3`} type={'password'} name='montoPesos' value={password2} onChange={(e) => setPassword2(e.target.value)}></input>
                 </label>
-                <SalmonButton funcion={printValues} classNames={`text-big justify-content-center lim-boton`} texto={`Crear`} ></SalmonButton>
+                <SalmonButton tipo={'submit'} funcion={crearUsuario} classNames={`text-big justify-content-center lim-boton`} texto={`Crear`} ></SalmonButton>
             </form>
+            <div id={`error-container`} className={``}>
+                        <div className={`error-container`}>
+                        <p className={`a-regular-red`}>{error}</p>
+                        </div>
+                    </div>
         </div>
         </>
     )

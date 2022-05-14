@@ -37,20 +37,18 @@ export default function LoginForm({loggedUser, setLoggedUser}){
             password: password
         }
         loginRequest(credentials).then((response)=>{
-            if (response.status == 200) {
-                Cookies.set('loggedUser', `{"id": "${response.data._id}"}`, {expires: 7})
-                window.location.reload(false);
-            }
-            if (response.status == 201){
+            console.log(response)
+            if (response.data == 'Usuario no existe'){
                 setError("Credenciales inválidas")
                 displayError()
             }
-            if (response.status == 202){
+            if (response.data == 'Usuario no verificado'){
                 setError("Usuario no verificado por email")
                 displayError()
             }
-            else{
-                setError("Credenciales inválidas")
+            else if(response.status == 200 && response.data != 'Usuario no verificado' && response.data != 'Usuario no existe'){
+                Cookies.set('loggedUser', `{"id": "${response.data._id}"}`, {expires: 7})
+                window.location.reload();
             }
         }).catch((error)=>{
             console.log(error)

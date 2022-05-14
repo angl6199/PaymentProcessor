@@ -7,7 +7,7 @@ passport.use(new LocalStrategy(
         console.log(username, password, "Estas son tus credenciales")
         Usuario.findOne({email: username}, function(err, usuario){
             if(err) return done(err)
-            if(!usuario) return done(null, null, {message: 'Email no existente o incorrecto'})
+            if(!usuario) return done(null, false)
             usuario.validPassword(password).then((result) => {
                 if (result == true) {
                     return done(null, usuario)

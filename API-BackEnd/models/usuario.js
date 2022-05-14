@@ -29,7 +29,7 @@ let usuarioSchema = new Schema({
     rol: {
         type: String,
         trim: true,
-        default: "client"
+        default: "Cliente"
     },
     fondos: {
         type: Number,
@@ -44,6 +44,10 @@ let usuarioSchema = new Schema({
         unique: true,
         validate: [validateEmail, 'Por favor, ingrese un email válido'],
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Ingrese un email válido']
+    },
+    activo: {
+        type: Boolean,
+        default: true
     },
     password: {
         type: String,
