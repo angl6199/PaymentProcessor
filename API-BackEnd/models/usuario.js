@@ -10,7 +10,7 @@ const mailer = require('../mailer/mailer')
 
 let Schema = mongoose.Schema
 
-let validateEmail = function(email) {
+let validateEmail = function (email) {
     let re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return re.test(email)
 };
@@ -63,22 +63,22 @@ let usuarioSchema = new Schema({
 
 usuarioSchema.plugin(uniqueValidator, { message: 'El {PATH} ya existe con otro usuario.' })
 
-usuarioSchema.pre('save', function(next){
-    if(this.isModified('password')){
+usuarioSchema.pre('save', function (next) {
+    if (this.isModified('password')) {
         this.password = bcrypt.hashSync(this.password, saltRounds)
     }
     next()
 })
 
-usuarioSchema.methods.validPassword = function(password){
+usuarioSchema.methods.validPassword = function (password) {
     return bcrypt.compare(password, this.password)
 }
 
-usuarioSchema.methods.enviar_mail_bienvenida = function(cb) {
-    const token = new Token({_userId: this.id, token: crypto.randomBytes(16).toString('hex')})
+usuarioSchema.methods.enviar_mail_bienvenida = function (cb) {
+    const token = new Token({ _userId: this.id, token: crypto.randomBytes(16).toString('hex') })
     const email_destination = this.email
     token.save(function (err) {
-        if(err) { return console.log(err.message) }
+        if (err) { return console.log(err.message) }
         const mailOptions = {
             from: 'no-reply@payment-processor.com',
             to: email_destination,
@@ -86,9 +86,8 @@ usuarioSchema.methods.enviar_mail_bienvenida = function(cb) {
             text: 'Hola,\n\nPor favor, para verificar su cuenta haga clic en el siguiente enlace: \n' + 'http://localhost:8000' + '\/token/confirmation\/' + token.token + '\n'
         }
 
-        mailer.sendMail(mailOptions, function(err){
-            if(err) { return console.log(err.message) }
-
+        mailer.sendMail(mailOptions, function (err) {
+            if (err) { return console.log(err.message) }
             console.log('Se envió un mail de confirmación a: ' + email_destination)
         })
     })

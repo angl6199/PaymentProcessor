@@ -1,20 +1,14 @@
 const mongoose = require('mongoose')
-
-const Usuario = require('./../models/usuario')
-
 let Schema = mongoose.Schema
-
 
 var pagoSchema = new Schema({
     _ordenanteId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
     _beneficiarioId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
-    monto: {type: Number, required: true},
-    estado: {type: String, trim: true, required: true}
-    })
+    monto: { type: Number, required: true },
+    estado: { type: String, trim: true, required: true }
+})
 
-
-
-pagoSchema.statics.createInstance = function (_ordenanteId, _beneficiarioId, monto, estado){
+pagoSchema.statics.createInstance = function (_ordenanteId, _beneficiarioId, monto, estado) {
     return new this({
         _ordenanteId: _ordenanteId,
         _beneficiarioId: _beneficiarioId,
@@ -23,7 +17,7 @@ pagoSchema.statics.createInstance = function (_ordenanteId, _beneficiarioId, mon
     })
 }
 
-pagoSchema.statics.add = function(aPago, cb){
+pagoSchema.statics.add = function (aPago, cb) {
     this.create(aPago, cb)
 }
 

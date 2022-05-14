@@ -9,36 +9,29 @@ import SalmonButton from './../../atoms/SalmonButton/index'
 //Imágenes
 import usersIcon from './../../../assets/img/users-icon.png'
 
-//Material UI
-import useMediaQuery from '@mui/material/useMediaQuery';
-
-
 export default function EditarUsuarioForm({ type, status, loggedUser, targetUser }) {
     const [nombres, setNombres] = useState();
     const [apellidos, setApellidos] = useState();
     const [rol, setRol] = useState();
     const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [password2, setPassword2] = useState();
     const [changed, setChanged] = useState(false)
     const [error, setError] = useState()
 
     function sendUpdate(e) {
         e.preventDefault();
         let data = {
-            nombre: nombres == undefined ? loggedUser.nombre : nombres,
-            apellidos: apellidos == undefined ? loggedUser.apellidos : apellidos,
-            rol: changed == true ? rol : loggedUser.rol,
-            email: email == undefined ? loggedUser.email : email
+            nombre: nombres === undefined ? loggedUser.nombre : nombres,
+            apellidos: apellidos === undefined ? loggedUser.apellidos : apellidos,
+            rol: changed === true ? rol : loggedUser.rol,
+            email: email === undefined ? loggedUser.email : email
         }
-        console.log(data);
 
         editarUsuario(data, targetUser).then((response) => {
-            if (response.data == 'Campos mal') {
+            if (response.data === 'Campos mal') {
                 setError("Campos no válidos")
                 displayError()
             }
-            else if (response.status == 200 && response.data != 'Campos mal') {
+            else if (response.status === 200 && response.data !== 'Campos mal') {
                 window.location.replace(`http://localhost:3000/${loggedUser.nombre}-${loggedUser.apellidos}/administracion-usuarios`)
             }
         })
@@ -46,7 +39,7 @@ export default function EditarUsuarioForm({ type, status, loggedUser, targetUser
     }
 
     function displayError() {
-        var element = document.getElementById('error-container') 
+        var element = document.getElementById('error-container')
         element.className = 'error-effect'
 
         setTimeout(() => {
@@ -55,8 +48,7 @@ export default function EditarUsuarioForm({ type, status, loggedUser, targetUser
     }
 
     function returnOptions() {
-        let options = ["cliente", "trabajador"]
-        if (loggedUser.rol == "Cliente") {
+        if (loggedUser.rol === "Cliente") {
             return (
                 <>
                     <option value={`Cliente`}>Cliente</option>
@@ -73,28 +65,20 @@ export default function EditarUsuarioForm({ type, status, loggedUser, targetUser
         }
     }
 
-    function cambiarField(e) {
-        e.preventDefault()
-        setChanged(true)
-        setRol(e.target.value)
-    }
-
-    {/* Componente que retorna página de Graduación con temporizador configurado con librería Countdown
-        importada de React */}
     return (
         <>
             <div className={`d-flex flex-column mb-5 pl-6 pr-6 pt-4 pb-5 box-shadow-gr-bg crear-orden-form-card`}>
                 <div className={`d-flex align-items-center`}>
-                    <img width={50} height={50} src={usersIcon}></img>
+                    <img alt="" width={50} height={50} src={usersIcon}></img>
                     <p className={`a-light-dark l mt-0 mb-0 ml-5`}>Formato edición usuario</p>
                 </div>
                 <hr className={`hr-gray mt-4 mb-0`}></hr>
                 <form className={`d-flex justify-content-center flex-column mt-8 crear-orden-form`}>
                     <label className={`a-light-dark text-big d-flex justify-content-space-between mb-6`}>Nombre(s):
-                        <input autoComplete={'off'} className={`text-normal a-light-dark crear-orden-input ml-3`} type={'text'} name='nombres' value={nombres == undefined ? loggedUser.nombre : nombres} onChange={(e) => setNombres(e.target.value)}></input>
+                        <input autoComplete={'off'} className={`text-normal a-light-dark crear-orden-input ml-3`} type={'text'} name='nombres' value={nombres === undefined ? loggedUser.nombre : nombres} onChange={(e) => setNombres(e.target.value)}></input>
                     </label>
                     <label className={`a-light-dark text-big d-flex justify-content-space-between mb-6`}>Apellido(s):
-                        <input autoComplete={'off'} className={`text-normal a-light-dark crear-orden-input ml-3`} type={'text'} name='apellidos' value={apellidos == undefined ? loggedUser.apellidos : apellidos} onChange={(e) => setApellidos(e.target.value)}></input>
+                        <input autoComplete={'off'} className={`text-normal a-light-dark crear-orden-input ml-3`} type={'text'} name='apellidos' value={apellidos === undefined ? loggedUser.apellidos : apellidos} onChange={(e) => setApellidos(e.target.value)}></input>
                     </label>
                     <label className={`a-light-dark text-big d-flex mb-6 justify-content-space-between`}>Rol:
                         <select className={`text-normal a-light-dark crear-orden-input ml-3 rol`} type={'text'} name='rol' value={rol} onChange={(e) => setRol(e)}>
@@ -102,14 +86,8 @@ export default function EditarUsuarioForm({ type, status, loggedUser, targetUser
                         </select>
                     </label>
                     <label className={`a-light-dark text-big d-flex justify-content-space-between mb-6`}>Email:
-                        <input autoComplete={'off'} className={`text-normal a-light-dark crear-orden-input ml-3`} type={'email'} name='email' value={email == undefined ? loggedUser.email : email} onChange={(e) => setEmail(e.target.value)}></input>
+                        <input autoComplete={'off'} className={`text-normal a-light-dark crear-orden-input ml-3`} type={'email'} name='email' value={email === undefined ? loggedUser.email : email} onChange={(e) => setEmail(e.target.value)}></input>
                     </label>
-                    {/*                 <label className={`a-light-dark text-big d-flex justify-content-space-between mb-6`}>Contraseña: 
-                        <input autoComplete={'off'} className={`text-normal a-light-dark crear-orden-input ml-3`} type={'password'} name='montoPesos' value={password} onChange={(e) => setPassword(e.target.value)}></input>
-                </label>
-                <label className={`a-light-dark text-big d-flex justify-content-space-between mb-10`}>Confirmar contraseña: 
-                        <input autoComplete={'off'} className={`text-normal a-light-dark crear-orden-input ml-3`} type={'password'} name='montoPesos' value={password2} onChange={(e) => setPassword2(e.target.value)}></input>
-                </label> */}
                     <div className="d-flex justify-content-space-between">
                         <SalmonButton tipo={"submit"} funcion={sendUpdate} classNames={`text-big justify-content-center lim-boton adjust-orden-actions`} texto={`Actualizar`} ></SalmonButton>
                         <SalmonButton classNames={`text-big justify-content-center lim-boton adjust-orden-actions`} texto={`Eliminar`} ></SalmonButton>
