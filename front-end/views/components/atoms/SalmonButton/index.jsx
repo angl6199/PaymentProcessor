@@ -1,7 +1,7 @@
 //React
 import React from "react"
 
-export default function PagosRecibidos({ classNames, texto, funcion, tipo }) {
+export default function SalmonButton({ classNames, texto, funcion, tipo }) {
 
     return (
         <>

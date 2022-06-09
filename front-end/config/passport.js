@@ -25,9 +25,6 @@ passport.use(new GoogleStrategy({
     clientSecret: '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',
     callbackURL: 'http://localhost:3000/login/google/redirect',
 }, function (issuer, profile, cb) {
-    console.log(issuer, "issuer");
-    console.log(profile, "profile");
-
     Usuario.create({ nombre: profile.name.givenName, apellidos: profile.name.familyName, email: profile.emails[0].value, password: profile.id, verificado:true }, function (err, nuevoUsuario) {
         let credentials = {
             username: profile.emails[0].value,
@@ -56,14 +53,11 @@ passport.use(new GoogleStrategy({
 );
 
 passport.serializeUser(function (usuario, cb) {
-    console.log("LO ESTOY SERIALIZANDO");
     cb(null, usuario.id)
 })
 
 passport.deserializeUser(function (id, cb) {
     Usuario.findById(id, function (err, usuario) {
-        console.log(usuario, "Estamos retornando el segundo usuario");
-        console.log("LO ESTOY DESSERIALIZANDO");
         cb(err, usuario);
     })
 })

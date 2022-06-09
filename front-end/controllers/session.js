@@ -8,11 +8,7 @@ exports.get_login = (req, res) => {
     res.render('login');
 }
 exports.post_login = (req, res, next) => {
-    console.log(req.body, 'Esto envia el login')
     passport.authenticate('local', function (err, usuario, info) {
-        console.log(err, 'Este es el error')
-        console.log(usuario, 'Este es el usuario')
-        console.log(info, 'Este es el info')
         if (err) return next(err)
         else if (!usuario) return res.render('login', { errorInformation: "Credenciales incorrectas" })
         else if (usuario.verificado == false) return res.render('login', { errorInformation: 'Usuario no verificado por mail' })
@@ -43,7 +39,6 @@ exports.get_login_google = (req, res, next) => {
 
 exports.get_login_google_redirect = (req, res, next) => {
     passport.authenticate('google', { failureRedirect: '/login', failureMessage: true }), function (req, res) {
-        console.log("BUEN INICIO DE SESION");
         res.redirect('/')
     }
 }
@@ -63,7 +58,6 @@ exports.post_register = (req, res) => {
                     res.render('signUp', { errorInformation: 'Email ya ocupado' });
                 }
                 else {
-                    /* res.status(200).json(nuevoUsuario) */
                     nuevoUsuario.enviar_mail_bienvenida()
                     res.redirect('/login')
                 }

@@ -64,7 +64,6 @@ exports.post_editar_divisa = (req, res) => {
         active: final,
         token: req.user.jsonToken
     }
-    console.log(credentials, "Estas son tus csredenciales");
     if (validateField(req.body.code) && validateField(req.body.description) && validateField(req.body.active)) {
         axios.post(`http://localhost:8000/divisas/${req.body.code}/update/`, credentials)
             .then((response) => {

@@ -7,7 +7,7 @@ import LeftMenu from "../components/molecules/LeftMenu";
 import EditarOrden from "../components/organisms/EditarOrden";
 import HeaderBar from "../components/organisms/HeaderBar";
 
-export default function EditarOrdenPage({ loggedUser, pago }) {
+export default function VerPago({ loggedUser, pago }) {
     return (
         <>
             <link rel="stylesheet" href="/public/css/App.css" />

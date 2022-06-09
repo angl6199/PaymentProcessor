@@ -4,7 +4,7 @@ import React, { useState } from "react"
 //Componentes
 import DivisasCard from '../../molecules/ObjectCard/index'
 
-export default function AdministracionUsuario({ loggedUser, divisas }) {
+export default function AdministracionDivisas({ loggedUser, divisas }) {
     const [monedas, setMonedas] = useState(divisas)
 
     return (

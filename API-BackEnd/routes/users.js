@@ -3,7 +3,6 @@ var router = express.Router();
 let userController = require('../controllers/userController')
 let jsonTokenController = require('../controllers/jsonToken')
 
-//Anadir usuario nuevo
 router.post('/register', userController.user_register);
 router.post('/update/:id', jsonTokenController.validateToken, userController.update_User);
 router.post('/login', userController.user_login);

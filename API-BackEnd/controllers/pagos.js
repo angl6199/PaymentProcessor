@@ -48,11 +48,6 @@ exports.pago_create = (req, res) => {
 
 function addFunds(beneficiario, monto) {
     monto = parseFloat(monto)
-    console.log(beneficiario, "A ESTE SE LE VAN A AGREGAR");
-    console.log(beneficiario.id, "ESTE ES EL ID AL QUE AGREGA");
-    console.log(monto, "ESTE ES EL MONTO A AGREGAR");
-    console.log(beneficiario.fondos, "ESTOS SON LOS FONDOS");
-    console.log(beneficiario.fondos , "ESTE ES EL RESULTADO DE LA SUMA");
     let newValues = { fondos: beneficiario.fondos + monto }
     Usuario.findByIdAndUpdate(beneficiario.id, newValues, function (err, i) {
         return true

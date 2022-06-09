@@ -3,7 +3,6 @@ import React, { useState } from "react"
 
 //Componentes
 import OrangeButton from '../../atoms/OrangeButton/index'
-import SalmonButton from '../../atoms/SalmonButton/index'
 
 export default function LoginForm({ errorInformation }) {
     const [email, setEmail] = useState()

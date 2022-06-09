@@ -53,8 +53,6 @@ exports.post_validar_orden = (req, res) => {
             };
 
             axios.request(options).then(function (response) {
-                console.log(response.data);
-                
                 let precioPorDivisaRed = parseFloat(response.data.rates.MXN.rate)
                 precioPorDivisaRed = precioPorDivisaRed.toFixed(2)
 

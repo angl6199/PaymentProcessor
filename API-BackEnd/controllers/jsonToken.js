@@ -7,7 +7,6 @@ exports.validateToken = (req, res, next) => {
     }
     try {
         const decoded = jwt.verify(token, "Esta es mi super clave secreta");
-        console.log(decoded, "Esto es lo que se decodifica")
         return next()
     } catch (err) {
         return res.status(401).send("jsonToken no valido");

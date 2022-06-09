@@ -1,7 +1,7 @@
 //React
 import React, { useState } from "react"
 
-export default function PagosRecibidos({ classNames, opciones }) {
+export default function DropDownMenu({ classNames, opciones }) {
     const [showMenu, setShowMenu] = useState(false);
     const [selection, setSelection] = useState(opciones[0]);
 

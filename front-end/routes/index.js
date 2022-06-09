@@ -9,7 +9,6 @@ router.get('/', authenticationController.validate_Logout, sessionController.get_
 router.get('/login', authenticationController.validate_Logout, sessionController.get_login);
 router.post('/login', sessionController.post_login);
 
-/* router.get('/login/google', sessionController.get_login_google); */
 router.get('/login/google', authenticationController.validate_Logout,
     passport.authenticate('google', {
         scope: ['email', 'profile']
@@ -20,7 +19,6 @@ router.get('/login/google/redirect', authenticationController.validate_Logout,
         successRedirect: '/',
         failureRedirect: '/login'
     }));
-/* router.get('/login/google/redirect', sessionController.get_login_google_redirect); */
 
 router.get('/signup', authenticationController.validate_Logout, sessionController.get_register);
 router.post('/signup', sessionController.post_register);

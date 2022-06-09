@@ -80,10 +80,6 @@ function validarEmail(valor) {
     return true
 }
 exports.post_borrar_usuario = (req, res) => {
-    console.log(req.params.id, "ESTE ES EL PRIMERO");
-    Usuario.findById(req.params.id, function(err, usuario){
-        console.log(usuario, "ESTE ES EL SEGUNDO");
-    })
     Usuario.findByIdAndRemove(req.params.id, function(err, response){
         if (err) console.log(err);
         else res.redirect(`/${req.user.rol == "Admin" ? 'admin' : 'superadmin'}/${req.user.nombre}-${req.user.apellidos}/usuarios`)

@@ -12,10 +12,6 @@ exports.divisa = (req, res) => {
     })
 }
 exports.divisa_create = (req, res) => {
-    console.log(req.body.code, "Codigo");
-    console.log(req.body.description, "Descripcion");
-    console.log(req.body.active, "Activo");
-    console.log(checkNationalCentralBankCurrencySyntaxis(req.body.code), "Funcion");
     if (req.body.code == '' || req.body.code == undefined || req.body.description == '' || req.body.description == undefined || req.body.active == undefined || checkNationalCentralBankCurrencySyntaxis(req.body.code) == false) {
         res.json('Error en los campos')
     }

@@ -5,7 +5,7 @@ import Cookies from 'js-cookie'
 //Componente de rutas
 import Router from "./config/routes"
 
-//Estilo en scss
+//Estilo en css
 import "./App.scss"
 
 export default class App extends React.Component {
