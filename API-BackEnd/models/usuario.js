@@ -63,6 +63,23 @@ let usuarioSchema = new Schema({
 
 usuarioSchema.plugin(uniqueValidator, { message: 'El {PATH} ya existe con otro usuario.' })
 
+usuarioSchema.statics.createInstance = function (nombre, apellidos, email, password, rol, activo, fondos, verificado) {
+    return new this({
+        nombre: nombre,
+        apellidos: apellidos,
+        email: email,
+        password: password,
+        rol: rol,
+        activo: activo,
+        fondos: fondos,
+        verificado, verificado
+    })
+}
+
+usuarioSchema.statics.add = function (aUsuario, cb) {
+    this.create(aUsuario, cb)
+}
+
 usuarioSchema.pre('save', function (next) {
     if (this.isModified('password')) {
         this.password = bcrypt.hashSync(this.password, saltRounds)

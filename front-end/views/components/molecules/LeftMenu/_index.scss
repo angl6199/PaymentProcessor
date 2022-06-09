@@ -1,0 +1,15 @@
+.option{
+    opacity: 0.8;
+}
+
+.menu-header{
+    background-color: $orange1;
+}
+
+.option:hover{
+    opacity: 1;
+}
+
+.option:hover p{
+    font-family: $robotoBold;
+}

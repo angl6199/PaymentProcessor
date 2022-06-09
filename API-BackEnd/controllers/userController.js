@@ -1,5 +1,6 @@
 const Usuario = require('../models/usuario')
 const passport = require('../config/passport')
+const jwt = require('jsonwebtoken')
 
 exports.user_register = (req, res) => {
     if (req.body.password != req.body.confirm_password) {
@@ -36,12 +37,34 @@ exports.get_all_users = (req, res) => {
 }
 
 exports.update_User = (req, res) => {
+    var ObjectId = require('mongoose').Types.ObjectId;
     let data = { nombre: req.body.nombre, apellidos: req.body.apellidos, rol: req.body.rol, email: req.body.email }
     if (validarEmail(req.body.email) && validateField(req.body.nombre) && validateField(req.body.apellidos) && validateField(req.body.rol)) {
-        Usuario.findByIdAndUpdate(req.params.id, data, function (err, usuario) {
-            if (err) res.json(err)
-            res.json(usuario)
+        Usuario.find({ email: req.body.email }, function (err, usuarios) {
+            let flag = false
+            if (usuarios.length > 0) {
+                usuarios.forEach(usuario => {
+                    let temp = new ObjectId(req.params.id)
+                    if (usuario._id.toString() != temp.toString()) {
+                        flag = true
+                    }
+                });
+                if (flag == false) {
+                    Usuario.findByIdAndUpdate(req.params.id, data, function (err, usuario) {
+                        if (err) res.json(err)
+                        res.json(usuario)
+                    })
+                } else {
+                    res.json("Correo ocupado")
+                }
+            } else {
+                Usuario.findByIdAndUpdate(req.params.id, data, function (err, usuario) {
+                    if (err) res.json(err)
+                    res.json(usuario)
+                })
+            }
         })
+
     } else {
         res.json("Campos mal")
     }
@@ -70,10 +93,25 @@ exports.user_login = (req, res, next) => {
         if (!usuario) res.json('Usuario no existe')
         if (usuario.verificado == false) res.json('Usuario no verificado')
         req.logIn(usuario, function (err) {
-            if (err) console.log("Hubo un error en el inicio de sesion")
-            else res.json(usuario)
+            if (err) console.log(err, "Hubo un error en el inicio de sesion")
+            else {
+                const token = jwt.sign({ email: usuario.email, nombre: usuario.nombre, apellidos: usuario.apellidos }, "Esta es mi super clave secreta", { expiresIn: 60 * 60 * 2 })
+                res.json(token)
+            }
         })
     })(req, res, next)
+}
+
+exports.user_delete_all_cypress = (req, res, next) => {
+    Usuario.deleteMany({}, function(err, temp){
+        res.status(204).end()
+    })
+}
+
+exports.user_verify_force = (req, res, next) => {
+    Usuario.findOneAndUpdate({email: req.body.email}, {verificado: true}, function(err, temp){
+        res.status(202).end()
+    })
 }
 
 exports.user_session = (req, res, next) => {

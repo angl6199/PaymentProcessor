@@ -1,0 +1,69 @@
+.gray-layout{
+    height: calc(100vh - 68px);
+    width: 100%;
+    background-color: $gray-background;
+}
+
+.right-header{
+    width: 100%;
+    height: 68px;
+    max-height: 68px;
+    background-color: $dark1;
+}
+
+.right-screen{
+    width: calc(100% - 284px);
+
+}
+
+.left-menu{
+    width: 284px;
+    height: 100vh;
+    background-color: white;
+    z-index: 2;
+}
+
+.category{
+    width: 190px;
+    border-radius: 5px;
+    background-color: #454549ce;
+}
+
+.film-container{
+    border-radius: 5px;
+    width: 190px;
+    height: 235px;
+    background-size: 190px 235px;
+    background-position: center;
+    transition: background-size 300ms;
+}
+
+.animation{
+    width: 100%;
+    height: 0;
+    background-color: #2f2f339f;
+    border-radius: 5px;
+    transition: height 200ms;
+}
+.animation > p{
+    display: none;
+    width: 80%;
+    text-align: center;
+    line-height: 25px;
+    transition: display 100ms;
+}
+
+.film-container:hover > .animation {
+    height: 100%;
+    transition: all 200ms;
+}
+.film-container:hover > .animation p {
+    display: block;
+    transition: all 100ms;
+}
+
+.movieLink:hover .film-container{
+    background-size: 250px 285px;
+    background-position: center;
+    transition: background-size 300ms;
+}

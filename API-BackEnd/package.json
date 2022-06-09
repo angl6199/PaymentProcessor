@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "devstart": "nodemon ./bin/www"
+    "devstart": "nodemon ./bin/www",
+    "mochatest": "mocha spec/pruebas_unitarias"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -14,6 +15,7 @@
     "express": "~4.16.1",
     "express-session": "^1.17.2",
     "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "mongoose": "^6.2.9",
     "mongoose-unique-validator": "^3.0.0",
@@ -24,6 +26,8 @@
     "request": "^2.88.2"
   },
   "devDependencies": {
+    "mocha": "^10.0.0",
+    "chai": "^4.3.6",
     "nodemon": "^2.0.15"
   }
 }

@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users')
 var tokenRouter = require('./routes/token')
 var indexRouter = require('./routes/index')
 var pagosRouter = require('./routes/pagos')
+var divisaRouter = require('./routes/divisa')
 
 var app = express();
 app.use(cors({
@@ -50,7 +51,7 @@ app.use('/', indexRouter)
 app.use('/users', usersRouter);
 app.use('/token', tokenRouter);
 app.use('/pagos', pagosRouter);
-
+app.use('/divisas', divisaRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -61,12 +62,12 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+/*   res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {}; */
 
   // render the error page
   console.log(err.message, "Este es el error")
-  res.status(err.status || 500).json(err.message)
+/*   res.status(err.status || 500).json(err.message) */
 });
 
 module.exports = app;
