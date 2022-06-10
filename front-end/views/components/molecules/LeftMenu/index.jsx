@@ -1,7 +1,7 @@
 //React
 import React from "react"
 
-export default function LeftMenu({ loggedUser }) {
+export default function LeftMenu({ loggedUser, environment }) {
     return (
         <>
             {loggedUser.rol == "Cliente" ?
@@ -13,23 +13,23 @@ export default function LeftMenu({ loggedUser }) {
                         <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Transacciones</p>
                         <a className={`text-decoration-none`} href={`/cliente/${loggedUser.nombre}-${loggedUser.apellidos}/pagos-realizados`}>
                             <div className={'d-flex align-items-center option mt-5'}>
-                                <img alt="" className={'ml-14'} width={20} height={20} src={'http://localhost:3000/public/assets/img/money.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Pagos realizados</p>
+                                <img alt="" className={'ml-14'} width={20} height={20} src={environment + '/public/assets/img/money.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Pagos realizados</p>
                             </div>
                         </a>
                         <a className={`text-decoration-none`} href={`/cliente/${loggedUser.nombre}-${loggedUser.apellidos}/crear-orden`}>
                             <div className={'d-flex align-items-center option mt-4'}>
-                                <img alt="" className={'ml-14'} width={20} height={20} src={'http://localhost:3000/public/assets/img/add-payment-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear pago</p>
+                                <img alt="" className={'ml-14'} width={20} height={20} src={environment + '/public/assets/img/add-payment-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear pago</p>
                             </div>
                         </a>
                         <a className={`text-decoration-none`} href={`/cliente/${loggedUser.nombre}-${loggedUser.apellidos}/abonos-recibidos`}>
                             <div className={'d-flex align-items-center option mt-5'}>
-                                <img alt="" className={'ml-14'} width={20} height={20} src={'http://localhost:3000/public/assets/img/money.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Abonos recibidos</p>
+                                <img alt="" className={'ml-14'} width={20} height={20} src={environment + '/public/assets/img/money.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Abonos recibidos</p>
                             </div>
                         </a>
                         <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Sistema</p>
                         <a className={`text-decoration-none`} href={`/logout`}>
                             <div className={'d-flex align-items-center option mt-4'}>
-                                <img alt="" className={'ml-14 mt-0'} width={20} height={20} src={'http://localhost:3000/public/assets/img/logout.png'}></img><p className={`ml-3 a-light-dark text-medium mt-0 mb-0`}>Salir</p>
+                                <img alt="" className={'ml-14 mt-0'} width={20} height={20} src={environment + '/public/assets/img/logout.png'}></img><p className={`ml-3 a-light-dark text-medium mt-0 mb-0`}>Salir</p>
                             </div>
                         </a>
                     </div>
@@ -43,34 +43,34 @@ export default function LeftMenu({ loggedUser }) {
                             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Transacciones</p>
                             <a className={`text-decoration-none`} href={`/admin/${loggedUser.nombre}-${loggedUser.apellidos}/pagos-realizados`}>
                                 <div className={'d-flex align-items-center option mt-5'}>
-                                    <img alt="" className={'ml-14'} width={20} height={20} src={'http://localhost:3000/public/assets/img/money.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Pagos realizados</p>
+                                    <img alt="" className={'ml-14'} width={20} height={20} src={environment + '/public/assets/img/money.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Pagos realizados</p>
                                 </div>
                             </a>
                             <a className={`text-decoration-none`} href={`/admin/${loggedUser.nombre}-${loggedUser.apellidos}/crear-orden`}>
                                 <div className={'d-flex align-items-center option mt-4'}>
-                                    <img alt="" className={'ml-14'} width={20} height={20} src={'http://localhost:3000/public/assets/img/add-payment-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear pago</p>
+                                    <img alt="" className={'ml-14'} width={20} height={20} src={environment + '/public/assets/img/add-payment-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear pago</p>
                                 </div>
                             </a>
                             <a className={`text-decoration-none`} href={`/admin/${loggedUser.nombre}-${loggedUser.apellidos}/abonos-recibidos`}>
                                 <div className={'d-flex align-items-center option mt-5'}>
-                                    <img alt="" className={'ml-14'} width={20} height={20} src={'http://localhost:3000/public/assets/img/money.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Abonos recibidos</p>
+                                    <img alt="" className={'ml-14'} width={20} height={20} src={environment + '/public/assets/img/money.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Abonos recibidos</p>
                                 </div>
                             </a>
                             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Usuarios</p>
                             <a className={`text-decoration-none`} href={`/admin/${loggedUser.nombre}-${loggedUser.apellidos}/usuarios`}>
                                 <div className={'d-flex align-items-center option mt-5'}>
-                                    <img alt="" className={'ml-14'} width={20} height={20} src={'http://localhost:3000/public/assets/img/administracion-users-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Administración</p>
+                                    <img alt="" className={'ml-14'} width={20} height={20} src={environment + '/public/assets/img/administracion-users-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Administración</p>
                                 </div>
                             </a>
                             <a className={`text-decoration-none`} href={`/admin/${loggedUser.nombre}-${loggedUser.apellidos}/crear-usuario`}>
                                 <div className={'d-flex align-items-center option mt-4'}>
-                                    <img alt="" className={'ml-14'} width={20} height={20} src={'http://localhost:3000/public/assets/img/add-user-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear usuario</p>
+                                    <img alt="" className={'ml-14'} width={20} height={20} src={environment + '/public/assets/img/add-user-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear usuario</p>
                                 </div>
                             </a>
                             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Sistema</p>
                             <a className={`text-decoration-none`} href={`/logout`}>
                                 <div className={'d-flex align-items-center option mt-4'}>
-                                    <img alt="" className={'ml-14 mt-0'} width={20} height={20} src={'http://localhost:3000/public/assets/img/logout.png'}></img><p className={`ml-3 a-light-dark text-medium mt-0 mb-0`}>Salir</p>
+                                    <img alt="" className={'ml-14 mt-0'} width={20} height={20} src={environment + '/public/assets/img/logout.png'}></img><p className={`ml-3 a-light-dark text-medium mt-0 mb-0`}>Salir</p>
                                 </div>
                             </a>
                         </div>
@@ -84,45 +84,45 @@ export default function LeftMenu({ loggedUser }) {
                             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Transacciones</p>
                             <a className={`text-decoration-none`} href={`/superadmin/${loggedUser.nombre}-${loggedUser.apellidos}/pagos-realizados`}>
                                 <div className={'d-flex align-items-center option mt-5'}>
-                                    <img alt="" className={'ml-14'} width={20} height={20} src={'http://localhost:3000/public/assets/img/money.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Pagos realizados</p>
+                                    <img alt="" className={'ml-14'} width={20} height={20} src={environment + '/public/assets/img/money.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Pagos realizados</p>
                                 </div>
                             </a>
                             <a className={`text-decoration-none`} href={`/superadmin/${loggedUser.nombre}-${loggedUser.apellidos}/crear-orden`}>
                                 <div className={'d-flex align-items-center option mt-4'}>
-                                    <img alt="" className={'ml-14'} width={20} height={20} src={'http://localhost:3000/public/assets/img/add-payment-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear pago</p>
+                                    <img alt="" className={'ml-14'} width={20} height={20} src={environment + '/public/assets/img/add-payment-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear pago</p>
                                 </div>
                             </a>
                             <a className={`text-decoration-none`} href={`/superadmin/${loggedUser.nombre}-${loggedUser.apellidos}/abonos-recibidos`}>
                                 <div className={'d-flex align-items-center option mt-5'}>
-                                    <img alt="" className={'ml-14'} width={20} height={20} src={'http://localhost:3000/public/assets/img/money.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Abonos recibidos</p>
+                                    <img alt="" className={'ml-14'} width={20} height={20} src={environment + '/public/assets/img/money.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Abonos recibidos</p>
                                 </div>
                             </a>
                             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Usuarios</p>
                             <a className={`text-decoration-none`} href={`/superadmin/${loggedUser.nombre}-${loggedUser.apellidos}/usuarios`}>
                                 <div className={'d-flex align-items-center option mt-5'}>
-                                    <img alt="" className={'ml-14'} width={20} height={20} src={'http://localhost:3000/public/assets/img/administracion-users-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Administración</p>
+                                    <img alt="" className={'ml-14'} width={20} height={20} src={environment + '/public/assets/img/administracion-users-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Administración</p>
                                 </div>
                             </a>
                             <a className={`text-decoration-none`} href={`/superadmin/${loggedUser.nombre}-${loggedUser.apellidos}/crear-usuario`}>
                                 <div className={'d-flex align-items-center option mt-4'}>
-                                    <img alt="" className={'ml-14'} width={20} height={20} src={'http://localhost:3000/public/assets/img/add-user-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear usuario</p>
+                                    <img alt="" className={'ml-14'} width={20} height={20} src={environment + '/public/assets/img/add-user-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Crear usuario</p>
                                 </div>
                             </a>
                             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Divisas</p>
                             <a className={`text-decoration-none`} href={`/superadmin/${loggedUser.nombre}-${loggedUser.apellidos}/divisas`}>
                                 <div className={'d-flex align-items-center option mt-5'}>
-                                    <img alt="" className={'ml-14'} width={20} height={20} src={'http://localhost:3000/public/assets/img/administracion-cuentas-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Administración</p>
+                                    <img alt="" className={'ml-14'} width={20} height={20} src={environment + '/public/assets/img/administracion-cuentas-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Administración</p>
                                 </div>
                             </a>
                             <a className={`text-decoration-none`} href={`/superadmin/${loggedUser.nombre}-${loggedUser.apellidos}/crear-divisa`}>
                                 <div className={'d-flex align-items-center option mt-4'}>
-                                    <img alt="" className={'ml-14'} width={20} height={20} src={'http://localhost:3000/public/assets/img/add-payment-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Registrar divisa</p>
+                                    <img alt="" className={'ml-14'} width={20} height={20} src={environment + '/public/assets/img/add-payment-icon.png'}></img><p className={`ml-3 mt-0 mb-0 a-light-dark text-medium`}>Registrar divisa</p>
                                 </div>
                             </a>
                             <p className={`ml-11 mt-10 mb-1 a-light-gray h3`}>Sistema</p>
                             <a className={`text-decoration-none`} href={`/logout`}>
                                 <div className={'d-flex align-items-center option mt-4 mb-5'}>
-                                    <img alt="" className={'ml-14 mt-0'} width={20} height={20} src={'http://localhost:3000/public/assets/img/logout.png'}></img><p className={`ml-3 a-light-dark text-medium mt-0 mb-0`}>Salir</p>
+                                    <img alt="" className={'ml-14 mt-0'} width={20} height={20} src={environment + '/public/assets/img/logout.png'}></img><p className={`ml-3 a-light-dark text-medium mt-0 mb-0`}>Salir</p>
                                 </div>
                             </a>
                         </div>

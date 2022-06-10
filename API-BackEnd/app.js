@@ -3,7 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const cors = require('cors')
+const cors = require('cors');
+const dotenv = require('dotenv');
+dotenv.config();
 
 var usersRouter = require('./routes/users')
 var tokenRouter = require('./routes/token')
@@ -13,7 +15,7 @@ var divisaRouter = require('./routes/divisa')
 
 var app = express();
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: process.env.FRONT_URI,
   credentials: true
 }))
 
@@ -33,7 +35,7 @@ app.use(passport.session())
 //----------------------------------------
 
 var mongoose = require('mongoose')
-var mongoDB = 'mongodb://localhost:27017/payment_processor'
+var mongoDB = process.env.MONGO_URI
 
 mongoose.connect(mongoDB, { useNewUrlParser: true })
 mongoose.Promise = global.Promise

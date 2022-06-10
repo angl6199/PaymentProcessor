@@ -2,17 +2,17 @@ const axios = require('axios');
 const Usuario = require('./../models/usuario')
 
 exports.get_usuarios = (req, res) => {
-    axios.get(`http://localhost:8000/users/all/${req.user.jsonToken}`)
+    axios.get(process.env.BACK_URI + `/users/all/${req.user.jsonToken}`)
         .then((response) => {
-            res.render('admin/usuarios', { loggedUser: req.user, usuarios: response.data });
+            res.render('admin/usuarios', { loggedUser: req.user, usuarios: response.data, environment: process.env.FRONT_URI });
         })
 }
 
 
 exports.get_usuario = (req, res) => {
-    axios.get(`http://localhost:8000/users/getOne/${req.params.id}/${req.user.jsonToken}`)
+    axios.get(process.env.BACK_URI +  `/users/getOne/${req.params.id}/${req.user.jsonToken}`)
         .then((response) => {
-            res.render('admin/verUsuario', { loggedUser: req.user, usuario: response.data })
+            res.render('admin/verUsuario', { loggedUser: req.user, usuario: response.data, environment: process.env.FRONT_URI })
         })
 }
 exports.post_usuario = (req, res) => {
@@ -23,13 +23,13 @@ exports.post_usuario = (req, res) => {
         email: req.body.email,
         token: req.user.jsonToken
     }
-    axios.post(`http://localhost:8000/users/update/${req.params.id}`, credentials)
+    axios.post(process.env.BACK_URI + `/users/update/${req.params.id}`, credentials)
         .then((response) => {
             if (response.data == 'Campos mal') {
-                res.render('admin/verUsuario', { loggedUser: req.user, usuario: response.data, errorInformation: "Los campos no son válidos" })
+                res.render('admin/verUsuario', { loggedUser: req.user, usuario: response.data, errorInformation: "Los campos no son válidos", environment: process.env.FRONT_URI  })
             }
             if (response.data == 'Correo ocupado') {
-                res.render('admin/verUsuario', { loggedUser: req.user, usuario: response.data, errorInformation: "Correo ya ocupado por otro usuario" })
+                res.render('admin/verUsuario', { loggedUser: req.user, usuario: response.data, errorInformation: "Correo ya ocupado por otro usuario", environment: process.env.FRONT_URI })
             }
             else if (response.status == 200 && response.data != 'Campos mal' && response.data != 'Correo ocupado') {
                 if (req.user.rol == "Admin") {
@@ -42,17 +42,17 @@ exports.post_usuario = (req, res) => {
 }
 
 exports.get_crear_usuario = (req, res) => {
-    res.render('admin/crearUsuario', { loggedUser: req.user })
+    res.render('admin/crearUsuario', { loggedUser: req.user, environment: process.env.FRONT_URI })
 }
 exports.post_crear_usuario = (req, res) => {
     if (req.body.password != req.body.confirm_password) {
-        res.render('admin/crearUsuario', { loggedUser: req.user, errorInformation: 'Las contraseñas no coinciden' });
+        res.render('admin/crearUsuario', { loggedUser: req.user, errorInformation: 'Las contraseñas no coinciden', environment: process.env.FRONT_URI });
     }
     else {
         if (validarEmail(req.body.email) && validateField(req.body.nombre) && validateField(req.body.apellidos)) {
             Usuario.create({ nombre: req.body.nombre, apellidos: req.body.apellidos, email: req.body.email, password: req.body.password, rol: req.body.rol }, function (err, nuevoUsuario) {
                 if (err) {
-                    res.render('admin/crearUsuario', { loggedUser: req.user, errorInformation: 'Email ya ocupado' });
+                    res.render('admin/crearUsuario', { loggedUser: req.user, errorInformation: 'Email ya ocupado', environment: process.env.FRONT_URI });
                 }
                 else {
                     nuevoUsuario.enviar_mail_bienvenida()
@@ -61,7 +61,7 @@ exports.post_crear_usuario = (req, res) => {
             })
         }
         else {
-            res.render('admin/crearUsuario', { loggedUser: req.user, errorInformation: 'Campos no válidos' });
+            res.render('admin/crearUsuario', { loggedUser: req.user, errorInformation: 'Campos no válidos', environment: process.env.FRONT_URI });
         }
     }
 }

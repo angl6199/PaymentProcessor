@@ -84,10 +84,10 @@ usuarioSchema.methods.enviar_mail_bienvenida = function (cb) {
     token.save(function (err) {
         if (err) { return console.log(err.message) }
         const mailOptions = {
-            from: 'no-reply@payment-processor.com',
+            from: 'paymentprocessor99@yopmail.com',
             to: email_destination,
             subject: 'Verificación de cuenta en payment-processor.com',
-            text: 'Hola,\n\nPor favor, para verificar su cuenta haga clic en el siguiente enlace: \n' + 'http://localhost:3000' + '\/token/confirmation\/' + token.token + '\n'
+            text: 'Hola,\n\nPor favor, para verificar su cuenta haga clic en el siguiente enlace: \n' + process.env.FRONT_URI  + '\/token/confirmation\/' + token.token + '\n'
         }
 
         mailer.sendMail(mailOptions, function (err) {

@@ -23,7 +23,7 @@ passport.use(new LocalStrategy(
 passport.use(new GoogleStrategy({
     clientID: '384710369551-b11fqidqct7l6k9mo9dbpe5tf4i8slt9.apps.googleusercontent.com',
     clientSecret: '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',
-    callbackURL: 'http://localhost:3000/login/google/redirect',
+    callbackURL: process.env.FRONT_URI + '/login/google/redirect',
 }, function (issuer, profile, cb) {
     Usuario.create({ nombre: profile.name.givenName, apellidos: profile.name.familyName, email: profile.emails[0].value, password: profile.id, verificado:true }, function (err, nuevoUsuario) {
         let credentials = {
@@ -32,7 +32,7 @@ passport.use(new GoogleStrategy({
         }
         if (err) {
             Usuario.findOne({ email: profile.emails[0].value }, function (err, usuario) {
-                axios.post(`http://localhost:8000/users/login`, credentials)
+                axios.post(process.env.BACK_URI + `/users/login`, credentials)
                     .then((response) => {
                         Usuario.findOneAndUpdate({ email: profile.emails[0].value }, { jsonToken: response.data }, function (err, usuario) {
                             return cb(null, usuario)
@@ -41,7 +41,7 @@ passport.use(new GoogleStrategy({
             })
         }
         else {
-            axios.post(`http://localhost:8000/users/login`, credentials)
+            axios.post(process.env.BACK_URI + `/users/login`, credentials)
                 .then((response) => {
                     Usuario.findOneAndUpdate({ email: profile.emails[0].value }, { jsonToken: response.data }, function (err, usuario) {
                         return cb(null, usuario)

@@ -9,7 +9,7 @@ module.exports = {
                 if (err) {
                     return res.status(500).send({ msg: err.message })
                 }
-                return res.redirect('http://localhost:3000/login')
+                return res.redirect(process.env.FRONT_URI + '/login')
             });
         })
     }

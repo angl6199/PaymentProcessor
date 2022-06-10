@@ -7,12 +7,12 @@ import LeftMenu from "../components/molecules/LeftMenu";
 import EditarOrden from "../components/organisms/EditarOrden";
 import HeaderBar from "../components/organisms/HeaderBar";
 
-export default function VerPago({ loggedUser, pago }) {
+export default function VerPago({ loggedUser, pago, environment }) {
     return (
         <>
             <link rel="stylesheet" href="/public/css/App.css" />
             <div className={`d-flex`}>
-                <LeftMenu loggedUser={loggedUser}></LeftMenu>
+                <LeftMenu loggedUser={loggedUser} environment={environment}></LeftMenu>
                 <div className={`d-flex flex-column right-screen`}>
                     <HeaderBar loggedUser={loggedUser} titulo={"Detalles de operación"}></HeaderBar>
                     <EditarOrden pago={pago} tipo={1} loggedUser={loggedUser}></EditarOrden>

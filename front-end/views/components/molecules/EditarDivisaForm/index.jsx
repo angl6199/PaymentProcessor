@@ -33,8 +33,8 @@ export default function EditarDivisaForm({ loggedUser, errorInformation, divisa 
         <>
             <div className={`d-flex flex-column mb-5 pl-6 pr-6 pt-4 pb-5 box-shadow-gr-bg crear-orden-form-card`}>
                 <div className={`d-flex align-items-center`}>
-                    <img alt="" width={50} height={50} src={'http://localhost:3000/public/assets/img/receipt.png'}></img>
-                    <p className={`a-light-dark l mt-0 mb-0 ml-5`}>Formato creación divisa</p>
+                    <img alt="" width={50} height={50} src={'../../../../public/assets/img/receipt.png'}></img>
+                    <p className={`a-light-dark l mt-0 mb-0 ml-5`}>Formato edición divisa</p>
                 </div>
                 <hr className={`hr-gray mt-4 mb-0`}></hr>
                 <form className={`d-flex justify-content-center flex-column mt-8 crear-orden-form`} action={`/superadmin/${loggedUser.nombre}-${loggedUser.apellidos}/${code}/divisa`} method="POST">

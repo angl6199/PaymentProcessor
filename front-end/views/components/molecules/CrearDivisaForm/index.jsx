@@ -14,7 +14,7 @@ export default function CrearDivisaForm({ loggedUser, errorInformation }) {
         <>
             <div className={`d-flex flex-column mb-5 pl-6 pr-6 pt-4 pb-5 box-shadow-gr-bg crear-orden-form-card`}>
                 <div className={`d-flex align-items-center`}>
-                    <img alt="" width={50} height={50} src={'http://localhost:3000/public/assets/img/receipt.png'}></img>
+                    <img alt="" width={50} height={50} src={'../../../public/assets/img/receipt.png'}></img>
                     <p className={`a-light-dark l mt-0 mb-0 ml-5`}>Formato registro de divisa</p>
                 </div>
                 <hr className={`hr-gray mt-4 mb-0`}></hr>

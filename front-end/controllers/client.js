@@ -1,36 +1,36 @@
 const axios = require('axios');
 
 exports.get_pagos_realizados = (req, res) => {
-    axios.get(`http://localhost:8000/pagos/${req.user._id}/${req.user.jsonToken}`)
+    axios.get(process.env.BACK_URI + `/pagos/${req.user._id}/${req.user.jsonToken}`)
         .then((response) => {
-            res.render('client/pagosRealizados', { loggedUser: req.user, objetos: response.data });
+            res.render('client/pagosRealizados', { loggedUser: req.user, objetos: response.data, environment: process.env.FRONT_URI });
         })
 }
 exports.get_pago = (req, res) => {
-    axios.get(`http://localhost:8000/pagos/getOne/${req.params.id}/${req.user.jsonToken}`)
+    axios.get(process.env.BACK_URI + `/pagos/getOne/${req.params.id}/${req.user.jsonToken}`)
         .then((response) => {
-            res.render('client/verPago', { loggedUser: req.user, pago: response.data });
+            res.render('client/verPago', { loggedUser: req.user, pago: response.data, environment: process.env.FRONT_URI });
         })
 
 }
 
 exports.get_abonos_recibidos = (req, res) => {
-    axios.get(`http://localhost:8000/pagos/abonos/${req.user._id}/${req.user.jsonToken}`)
+    axios.get(process.env.BACK_URI + `/pagos/abonos/${req.user._id}/${req.user.jsonToken}`)
         .then((response) => {
-            res.render('client/abonosRecibidos', { loggedUser: req.user, objetos: response.data });
+            res.render('client/abonosRecibidos', { loggedUser: req.user, objetos: response.data, environment: process.env.FRONT_URI });
         })
 }
 exports.get_abono = (req, res) => {
-    axios.get(`http://localhost:8000/pagos/getOne/${req.params.id}/${req.user.jsonToken}`)
+    axios.get(process.env.BACK_URI + `/pagos/getOne/${req.params.id}/${req.user.jsonToken}`)
         .then((response) => {
-            res.render('client/verAbono', { loggedUser: req.user, pago: response.data });
+            res.render('client/verAbono', { loggedUser: req.user, pago: response.data, environment: process.env.FRONT_URI });
         })
 }
 
 exports.get_crear_orden = (req, res) => {
-    axios.get(`http://localhost:8000/divisas/getAll/${req.user.jsonToken}`)
+    axios.get(process.env.BACK_URI + `/divisas/getAll/${req.user.jsonToken}`)
         .then((response) => {
-            res.render('client/crearOrden', { loggedUser: req.user, divisas: response.data });
+            res.render('client/crearOrden', { loggedUser: req.user, divisas: response.data, environment: process.env.FRONT_URI });
         })
 }
 exports.post_validar_orden = (req, res) => {
@@ -59,19 +59,19 @@ exports.post_validar_orden = (req, res) => {
                 let divisaApesosRed = parseFloat(response.data.rates.MXN.rate_for_amount)
                 divisaApesosRed = divisaApesosRed.toFixed(2)
 
-                res.render('client/crearOrden', { loggedUser: req.user, final: true, divisas: [credentials.divisa], precioPorDivisa: precioPorDivisaRed, divisaApesos: divisaApesosRed, lastform: credentials })
+                res.render('client/crearOrden', { loggedUser: req.user, final: true, divisas: [credentials.divisa], precioPorDivisa: precioPorDivisaRed, divisaApesos: divisaApesosRed, lastform: credentials, environment: process.env.FRONT_URI })
             }).catch(function (error) {
                 console.error(error);
             });
         }
         else {
-            res.render('client/crearOrden', { loggedUser: req.user, final: true, divisas: [credentials.divisa], precioPorDivisa: 100, divisaApesos: 1000, lastform: credentials })
+            res.render('client/crearOrden', { loggedUser: req.user, final: true, divisas: [credentials.divisa], precioPorDivisa: 100, divisaApesos: 1000, lastform: credentials, environment: process.env.FRONT_URI })
         }
     }
     else {
-        axios.get(`http://localhost:8000/divisas/getAll/${req.user.jsonToken}`)
+        axios.get(process.env.BACK_URI + `/divisas/getAll/${req.user.jsonToken}`)
             .then((response) => {
-                res.render('client/crearOrden', { loggedUser: req.user, divisas: response.data, errorInformation: "Error en los campos" });
+                res.render('client/crearOrden', { loggedUser: req.user, divisas: response.data, errorInformation: "Error en los campos", environment: process.env.FRONT_URI });
             })
     }
 }
@@ -90,18 +90,18 @@ exports.post_crear_orden = (req, res) => {
         precioPorDivisa: precioPorDivisaVariable,
         token: req.user.jsonToken
     }
-    axios.post(`http://localhost:8000/pagos/create`, credentials)
+    axios.post(process.env.BACK_URI + `/pagos/create`, credentials)
         .then((response) => {
             if (response.data == 'Fondos insuficientes') {
-                axios.get(`http://localhost:8000/divisas/getAll/${req.user.jsonToken}`)
+                axios.get(process.env.BACK_URI + `/divisas/getAll/${req.user.jsonToken}`)
                     .then((response) => {
-                        res.render('client/crearOrden', { loggedUser: req.user, divisas: response.data, errorInformation: "No cuentas con fondos suficientes" });
+                        res.render('client/crearOrden', { loggedUser: req.user, divisas: response.data, errorInformation: "No cuentas con fondos suficientes", environment: process.env.FRONT_URI });
                     })
             }
             if (response.data == 'No hay beneficiario') {
-                axios.get(`http://localhost:8000/divisas/getAll/${req.user.jsonToken}`)
+                axios.get(process.env.BACK_URI + `/divisas/getAll/${req.user.jsonToken}`)
                     .then((response) => {
-                        res.render('client/crearOrden', { loggedUser: req.user, divisas: response.data, errorInformation: "Beneficiario no válido" });
+                        res.render('client/crearOrden', { loggedUser: req.user, divisas: response.data, errorInformation: "Beneficiario no válido", environment: process.env.FRONT_URI });
                     })
             }
             else if (response.status === 200 && response.data !== 'No hay beneficiario' && response.data !== 'Fondos insuficientes') {
