@@ -10,10 +10,6 @@ import HeaderBar from "../components/organisms/HeaderBar";
 
 
 export default function PagosRecibidosPage({ loggedUser, objetos, environment }) {
-    const { refresh } = useParams()
-    if (refresh === true) {
-        window.location.reload(false);
-    }
 
     return (
         <>
