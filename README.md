@@ -24,5 +24,5 @@
 
 ## URL a producción en HEROKU
 - API o Backend (cuenta con protección de JSON Tokens): https://payment-p-api.herokuapp.com
-- Sistema o Frontend: https://payment-p.herokuapp.com/https://payment-p.herokuapp.com/
+- Sistema o Frontend: https://payment-p.herokuapp.com
 - **Importante**: para facilitar el uso de perfiles en producción, se cuenta ya en base de datos con un **perfil superadmin: (email: superadmin@yopmail.com, password: asdf)** y con un **perfil admin: (email: admin@yopmail.com, password: asdf)**
